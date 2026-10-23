@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Topics | The Mathematics Observatory</title>
+  <meta name="description" content="Explore Grade 11 General Mathematics topic by topic, with worked examples and interactive tools.">
+    <link rel="stylesheet" href="assets/css/styles.css?v=18">
+    <link rel="stylesheet" href="assets/css/assistant.css?v=8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+        <link rel="stylesheet" href="assets/css/explore.css?v=35">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/archivo-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <meta property="og:site_name" content="The Mathematics Observatory">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Explore Topics | The Mathematics Observatory">
+  <meta property="og:description" content="Explore Grade 11 General Mathematics topic by topic, with worked examples and interactive tools.">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#15120F">
+  <script defer src="assets/js/header-ai.js"></script>
+  <link rel="stylesheet" href="assets/css/fun.css">
+  <script defer src="assets/js/fun.js"></script>
+</head>
+<body class="observatory-page explore-page" data-section="explore">
+<a class="skip-link" href="#main">Skip to main content</a>
+    <!-- Navigation -->
+    <header class="site-header">
+<nav class="main-nav" aria-label="Main navigation">
+  <div class="nav-container">
+    <a class="logo" href="index.html" aria-label="The Mathematics Observatory home"><svg class="logo-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><defs><linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset="1" stop-color="#FFB89A"/></linearGradient></defs><rect x="1.5" y="1.5" width="29" height="29" rx="9" fill="url(#logo-grad)" stroke="#282435" stroke-width="2"/><path d="M19.5 7.5c-2.6-.9-4 .6-4 3.4v10.2c0 2.8-1.4 4.3-4 3.4" fill="none" stroke="#282435" stroke-width="2.4" stroke-linecap="round"/><circle cx="20.8" cy="8.2" r="1.5" fill="#282435"/><circle cx="10.8" cy="23.8" r="1.5" fill="#282435"/></svg><span class="logo-text"><span class="logo-the">The </span>Mathematics Observatory</span></a>
+    <ul class="nav-links" id="site-navigation">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="learn.html" class="nav-link">Learn</a></li>
+      <li><a href="explore.html" class="nav-link active" aria-current="page">Explore</a></li>
+      <li><a href="visualize.html" class="nav-link">Visualize</a></li>
+      <li><a href="laboratory.html" class="nav-link">Laboratory</a></li>
+      <li><a href="challenges.html" class="nav-link">Challenges</a></li>
+      <li><a href="history.html" class="nav-link">History</a></li>
+      <li><a href="proofs.html" class="nav-link">Why It Works</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="header-ai" type="button" aria-label="Ask the math tutor" aria-pressed="false" title="Ask the math tutor"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.6 8.6 0 0 1-3.2-.6L4 20l1.7-3.8A7.2 7.2 0 0 1 4.5 12 7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7Z"/><path d="M12 8.2l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9z" fill="currentColor" stroke="none"/></svg></button>
+      <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+    <button class="explore-theme-toggle" id="explore-theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <span aria-hidden="true">◐</span>
+        <span class="theme-toggle-label">Dark mode</span>
+    </button>
+
+    <main id="main">
+        <h1 class="visually-hidden">Explore Grade 11 formulas and curriculum paths</h1>
+        <section class="formula-lab" id="formula-lab" aria-labelledby="formula-lab-title">
+            <div class="explore-shell">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow eyebrow-dark"><span></span> Formula explorer</p>
+                        <h2 id="formula-lab-title">Your mathematics workbench</h2>
+                    </div>
+                    <p>Move from notation to meaning. Every formula includes variable definitions, a generated example, a worked solution, and a practice check.</p>
+                </div>
+
+                <div class="formula-toolbar">
+                    <label class="search-field" for="formula-search">
+                        <span class="visually-hidden">Search formulas</span>
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+                        <input id="formula-search" type="search" autocomplete="off" placeholder="Search formulas, variables, or ideas">
+                        <kbd>/</kbd>
+                    </label>
+                    <div class="formula-filter-group" id="formula-filters" aria-label="Filter by curriculum topic">
+                        <button class="formula-filter is-active" data-category="all" type="button">All topics</button>
+                        <button class="formula-filter" data-category="Functions" type="button">Functions</button>
+                        <button class="formula-filter" data-category="Business Math" type="button">Business math</button>
+                        <button class="formula-filter" data-category="Sequences" type="button">Sequences</button>
+                        <button class="formula-filter" data-category="Measurement" type="button">Measurement</button>
+                        <button class="formula-filter" data-category="Geometry" type="button">Geometry</button>
+                        <button class="formula-filter" data-category="Trigonometry" type="button">Trigonometry</button>
+                        <button class="formula-filter" data-category="Probability" type="button">Probability</button>
+                        <button class="formula-filter" data-category="Finance" type="button">Finance</button>
+                        <button class="formula-filter" data-category="Statistics" type="button">Statistics</button>
+                        <button class="formula-filter" data-category="Logic" type="button">Logic</button>
+                    </div>
+                    <button class="button button-surprise" id="surprise-formula-btn" type="button">
+                        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h3c4 0 5 10 9 10h4M17 14l3 3-3 3M4 17h3c1.6 0 2.7-1.5 3.8-3.4M15 7h5M17 4l3 3-3 3"/></svg>
+                        Surprise me
+                    </button>
+                </div>
+
+                <p class="results-summary" id="results-summary" aria-live="polite"></p>
+
+                <div class="formula-workspace">
+                    <aside class="formula-index" aria-label="Formula index">
+                        <div class="panel-label">
+                            <span>Formula index</span>
+                            <span id="visible-count">42 items</span>
+                        </div>
+                        <div class="formula-card-list" id="formula-card-list"></div>
+                    </aside>
+
+                    <article class="formula-detail" aria-live="polite">
+                        <header class="formula-detail-header">
+                            <div>
+                                <span class="formula-badge" id="active-formula-category"></span>
+                                <h3 id="active-formula-name"></h3>
+                            </div>
+                            <span class="formula-number" id="active-formula-number">01 / 42</span>
+                        </header>
+
+                        <div class="formula-display">
+                            <div class="formula-display-heading">
+                                <span class="display-label">Core relationship</span>
+                                <button class="piecewise-rules-toggle hidden" id="piecewise-rules-toggle" type="button" aria-pressed="false">Show 3 rules</button>
+                            </div>
+                            <div class="formula-expression" id="active-formula-expression"></div>
+                            <p id="active-formula-purpose"></p>
+                        </div>
+
+                        <section class="variables-section" aria-labelledby="variables-title">
+                            <div class="subsection-heading">
+                                <h4 id="variables-title">Read the notation</h4>
+                                <span>Variable guide</span>
+                            </div>
+                            <div class="formula-variables" id="active-formula-variables"></div>
+                        </section>
+
+                        <section class="practice-panel" aria-labelledby="practice-title">
+                            <div class="practice-header">
+                                <div>
+                                    <span class="practice-kicker">Apply the idea</span>
+                                    <h4 id="practice-title">Practice example</h4>
+                                </div>
+                                <span class="practice-status" id="practice-status">Example ready</span>
+                            </div>
+
+                            <p class="practice-question" id="practice-question">Select a problem to begin practicing.</p>
+
+                            <div class="difficulty-picker" role="group" aria-label="Choose practice difficulty">
+                                <span class="difficulty-label">Difficulty</span>
+                                <button class="difficulty-button" type="button" data-difficulty="easy" aria-pressed="true">Easy</button>
+                                <button class="difficulty-button" type="button" data-difficulty="medium" aria-pressed="false">Medium</button>
+                                <button class="difficulty-button" type="button" data-difficulty="hard" aria-pressed="false">Hard</button>
+                            </div>
+
+                            <div class="practice-actions">
+                                <button class="button button-dark" id="generate-example-btn" type="button">New example</button>
+                                <button class="button button-light" id="show-solution-btn" type="button">Show solution</button>
+                                <button class="button button-light" id="try-it-yourself-btn" type="button">Try it yourself</button>
+                            </div>
+
+                            <div class="formula-solution hidden" id="formula-solution"></div>
+
+                            <div class="practice-form hidden" id="practice-form">
+                                <label for="student-answer">Your numerical answer</label>
+                                <div class="practice-answer-row">
+                                    <input id="student-answer" type="number" inputmode="decimal" step="any" placeholder="Enter a number">
+                                    <button class="button button-primary" id="submit-answer-btn" type="button">Check answer</button>
+                                </div>
+                            </div>
+                            <p class="practice-feedback" id="practice-feedback" aria-live="polite"></p>
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="curriculum-paths" id="curriculum-paths" aria-labelledby="paths-title">
+            <div class="explore-shell">
+                <div class="section-heading path-heading">
+                    <div>
+                        <p class="eyebrow eyebrow-dark"><span></span> Curriculum map</p>
+                        <h2 id="paths-title">Choose a line of inquiry</h2>
+                    </div>
+                    <p>These paths follow the attached Grade 11 General Mathematics budget of work and lead directly into the related formulas above.</p>
+                </div>
+
+                <div class="path-grid">
+                    <button class="path-card path-functions" type="button" data-category-filter="Functions">
+                        <span class="path-index">01</span>
+                        <div class="path-visual" aria-hidden="true">
+                            <svg viewBox="0 0 260 120"><path d="M8 98C48 96 49 22 94 28s37 73 82 64 38-69 76-78"/><circle cx="94" cy="28" r="5"/><circle cx="176" cy="92" r="5"/></svg>
+                        </div>
+                        <span class="path-meta">Relations · Graphs · Models</span>
+                        <strong>Functions</strong>
+                        <p>Read rules, compare representations, and model changing quantities.</p>
+                        <span class="path-link">Explore this path <i>→</i></span>
+                    </button>
+
+                    <button class="path-card path-sequences" type="button" data-category-filter="Sequences">
+                        <span class="path-index">02</span>
+                        <div class="sequence-visual" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+                        <span class="path-meta">Patterns · Series · Sigma</span>
+                        <strong>Sequences &amp; series</strong>
+                        <p>Describe growth term by term and find the total of finite patterns.</p>
+                        <span class="path-link">Explore this path <i>→</i></span>
+                    </button>
+
+                    <button class="path-card path-business" type="button" data-category-filter="Business Math">
+                        <span class="path-index">03</span>
+                        <div class="interest-visual" aria-hidden="true">
+                            <span style="--h:28%"></span><span style="--h:43%"></span><span style="--h:60%"></span><span style="--h:82%"></span>
+                        </div>
+                        <span class="path-meta">Rates · Interest · Decisions</span>
+                        <strong>Business mathematics</strong>
+                        <p>Investigate percentage change, investments, and the cost of borrowing.</p>
+                        <span class="path-link">Explore this path <i>→</i></span>
+                    </button>
+
+                    <button class="path-card path-statistics" type="button" data-category-filter="Statistics">
+                        <span class="path-index">04</span>
+                        <div class="scatter-visual" aria-hidden="true">
+                            <i style="--x:12%;--y:78%"></i><i style="--x:28%;--y:66%"></i><i style="--x:42%;--y:55%"></i><i style="--x:61%;--y:39%"></i><i style="--x:77%;--y:34%"></i><i style="--x:89%;--y:16%"></i>
+                        </div>
+                        <span class="path-meta">Data · Association · Evidence</span>
+                        <strong>Statistics</strong>
+                        <p>Summarize observations and examine relationships between variables.</p>
+                        <span class="path-link">Explore this path <i>→</i></span>
+                    </button>
+
+                    <button class="path-card path-trigonometry" type="button" data-category-filter="Trigonometry">
+                        <span class="path-index">05</span>
+                        <div class="path-visual" aria-hidden="true">
+                            <svg viewBox="0 0 260 120"><path d="M40 100V30l160 70"/><path d="M40 84h16V100"/><circle cx="40" cy="30" r="5"/><circle cx="200" cy="100" r="5"/></svg>
+                        </div>
+                        <span class="path-meta">Triangles · Ratios · Bearings</span>
+                        <strong>Trigonometry</strong>
+                        <p>Solve right and oblique triangles with ratios, Heron's formula, and the laws of sines and cosines.</p>
+                        <span class="path-link">Explore this path <i>→</i></span>
+                    </button>
+
+                    <button class="path-card path-measurement" type="button" data-category-filter="Measurement">
+                        <span class="path-index">06</span>
+                        <div class="path-visual" aria-hidden="true">
+                            <svg viewBox="0 0 260 120"><path d="M25 42h170M175 32l22 10-22 10"/><path d="M235 78H65M85 68l-22 10 22 10"/><path d="M60 20v12M90 20v12M120 20v12M150 20v12"/></svg>
+                        </div>
+                        <span class="path-meta">Units · Scale · Temperature</span>
+                        <strong>Measurement</strong>
+                        <p>Convert units, read map scales, and solve temperature and area problems.</p>
+                        <span class="path-link">Explore this path <i>→</i></span>
+                    </button>
+
+                    <button class="path-card path-geometry" type="button" data-category-filter="Geometry">
+                        <span class="path-index">07</span>
+                        <div class="path-visual" aria-hidden="true">
+                            <svg viewBox="0 0 260 120"><circle cx="70" cy="62" r="34"/><rect x="140" y="32" width="76" height="60"/><path d="M140 32l24-14h76l-24 14"/></svg>
+                        </div>
+                        <span class="path-meta">Solids · Area · Volume</span>
+                        <strong>Geometry</strong>
+                        <p>Find the surface area and volume of prisms, cylinders, cones, pyramids, and spheres.</p>
+                        <span class="path-link">Explore this path <i>→</i></span>
+                    </button>
+
+                    <button class="path-card path-probability" type="button" data-category-filter="Probability">
+                        <span class="path-index">08</span>
+                        <div class="scatter-visual" aria-hidden="true">
+                            <i style="--x:15%;--y:30%"></i><i style="--x:32%;--y:55%"></i><i style="--x:50%;--y:40%"></i><i style="--x:66%;--y:65%"></i><i style="--x:82%;--y:25%"></i>
+                        </div>
+                        <span class="path-meta">Chance · Expectation · Normal</span>
+                        <strong>Probability</strong>
+                        <p>Model discrete random variables and standardize values with z-scores.</p>
+                        <span class="path-link">Explore this path <i>→</i></span>
+                    </button>
+
+                    <button class="path-card path-finance" type="button" data-category-filter="Finance">
+                        <span class="path-index">09</span>
+                        <div class="interest-visual" aria-hidden="true">
+                            <span style="--h:20%"></span><span style="--h:36%"></span><span style="--h:54%"></span><span style="--h:78%"></span>
+                        </div>
+                        <span class="path-meta">Interest · Annuities · Loans</span>
+                        <strong>Finance</strong>
+                        <p>Grow investments with compound interest and value annuities and loans.</p>
+                        <span class="path-link">Explore this path <i>→</i></span>
+                    </button>
+
+                    <button class="path-card path-logic" type="button" data-category-filter="Logic">
+                        <span class="path-index">10</span>
+                        <div class="path-visual" aria-hidden="true">
+                            <svg viewBox="0 0 260 120"><circle cx="52" cy="60" r="16"/><circle cx="208" cy="60" r="16"/><path d="M72 60h116M168 50l20 10-20 10"/></svg>
+                        </div>
+                        <span class="path-meta">Propositions · Truth · Conditionals</span>
+                        <strong>Logic</strong>
+                        <p>Classify propositions and test conditional forms and truth values.</p>
+                        <span class="path-link">Explore this path <i>→</i></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="study-strip" aria-label="Study prompt">
+            <div class="explore-shell study-strip-inner">
+                <div>
+                    <span class="study-mark">∑</span>
+                    <p><strong>Look for structure, not shortcuts.</strong> Generate another example and notice what changes—and what stays invariant.</p>
+                </div>
+                <a href="#formula-lab">Return to the workbench <span>↑</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-brand"><a class="site-footer-name" href="index.html">The Mathematics Observatory</a><p>A Grade 11 exploration project</p></div><nav class="site-footer-nav" aria-label="Footer"><ul><li><a href="index.html">Home</a></li><li><a href="learn.html">Learn</a></li><li><a href="explore.html">Explore</a></li><li><a href="visualize.html">Visualize</a></li><li><a href="laboratory.html">Laboratory</a></li><li><a href="challenges.html">Challenges</a></li><li><a href="history.html">History</a></li><li><a href="proofs.html">Why It Works</a></li></ul></nav><ul class="site-footer-meta"><li><a href="docs/references/G11-General-Mathematics.pdf">Curriculum source (PDF)</a></li><li><a href="#">Back to top <span aria-hidden="true">&uarr;</span></a></li></ul></div><p class="site-footer-legal">&copy; 2026 The Mathematics Observatory</p></footer>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/curriculum-data.js?v=7"></script>
+    <script src="assets/js/math-calculator.js?v=7"></script>
+    <script src="assets/js/assistant-config.js"></script>
+    <script src="assets/js/assistant.js?v=47"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="assets/js/explore-formulas.js"></script>
+    <script defer src="assets/js/explore.js"></script>
+<script defer src="assets/js/progress.js"></script><script defer src="assets/js/topic-chip.js"></script>
+</body>
+</html>

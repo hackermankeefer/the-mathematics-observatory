@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Mathematics Observatory | Grade 11 General Mathematics</title>
+  <meta name="description" content="A Grade 11 General Mathematics study site with lessons, interactive graphs, experiments, practice challenges and an AI tutor.">
+    <link rel="stylesheet" href="assets/css/styles.css?v=18" />
+    <link rel="stylesheet" href="assets/css/dashboard.css?v=2" />
+    <link rel="stylesheet" href="assets/css/assistant.css?v=8" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/archivo-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <meta property="og:site_name" content="The Mathematics Observatory">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Mathematics Observatory | Grade 11 General Mathematics">
+  <meta property="og:description" content="A Grade 11 General Mathematics study site with lessons, interactive graphs, experiments, practice challenges and an AI tutor.">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#15120F">
+  <script defer src="assets/js/header-ai.js"></script>
+  <link rel="stylesheet" href="assets/css/fun.css">
+  <script defer src="assets/js/fun.js"></script>
+</head>
+  <body class="home-page">
+<a class="skip-link" href="#main">Skip to main content</a>
+    <!-- Navigation -->
+    <header class="site-header">
+<nav class="main-nav" aria-label="Main navigation">
+  <div class="nav-container">
+    <a class="logo" href="index.html" aria-label="The Mathematics Observatory home"><svg class="logo-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><defs><linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset="1" stop-color="#FFB89A"/></linearGradient></defs><rect x="1.5" y="1.5" width="29" height="29" rx="9" fill="url(#logo-grad)" stroke="#282435" stroke-width="2"/><path d="M19.5 7.5c-2.6-.9-4 .6-4 3.4v10.2c0 2.8-1.4 4.3-4 3.4" fill="none" stroke="#282435" stroke-width="2.4" stroke-linecap="round"/><circle cx="20.8" cy="8.2" r="1.5" fill="#282435"/><circle cx="10.8" cy="23.8" r="1.5" fill="#282435"/></svg><span class="logo-text"><span class="logo-the">The </span>Mathematics Observatory</span></a>
+    <ul class="nav-links" id="site-navigation">
+      <li><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+      <li><a href="learn.html" class="nav-link">Learn</a></li>
+      <li><a href="explore.html" class="nav-link">Explore</a></li>
+      <li><a href="visualize.html" class="nav-link">Visualize</a></li>
+      <li><a href="laboratory.html" class="nav-link">Laboratory</a></li>
+      <li><a href="challenges.html" class="nav-link">Challenges</a></li>
+      <li><a href="history.html" class="nav-link">History</a></li>
+      <li><a href="proofs.html" class="nav-link">Why It Works</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="header-ai" type="button" aria-label="Ask the math tutor" aria-pressed="false" title="Ask the math tutor"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.6 8.6 0 0 1-3.2-.6L4 20l1.7-3.8A7.2 7.2 0 0 1 4.5 12 7.5 7.5 0 0 1 12 4.5a7.5 7.5 0 0 1 8 7Z"/><path d="M12 8.2l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9z" fill="currentColor" stroke="none"/></svg></button>
+      <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-controls="site-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+    <main id="main">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <div class="grid-overlay"></div>
+        <canvas id="hero-canvas"></canvas>
+      </div>
+      <div class="hero-content">
+        <p class="hero-badge"><span aria-hidden="true">✳</span> Grade 11 · General Mathematics</p>
+        <h1 class="hero-title">
+          <span class="title-line">The Mathematics</span>
+          <span class="title-line highlight">Observatory</span>
+        </h1>
+        <p class="hero-subtitle">
+          A comprehensive digital exploration of Grade 11 Mathematics
+        </p>
+        <div class="hero-actions">
+          <button class="cta-button" id="begin-exploration">Begin Exploration</button>
+          <a class="hero-secondary" href="#about">About this archive <span aria-hidden="true">↓</span></a>
+        </div>
+        <dl class="hero-stats" aria-label="Site summary">
+          <div><dt data-count="7">7</dt><dd>studios to explore</dd></div>
+          <div><dt data-count="215">215</dt><dd>worked examples</dd></div>
+          <div><dt data-count="42">42</dt><dd>formulas to inspect</dd></div>
+        </dl>
+      </div>
+      <div class="scroll-indicator">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- Your path today (revealed by dashboard.js; hidden without JS or storage) -->
+    <section class="path" id="path" aria-labelledby="path-title" hidden>
+      <div class="path-inner">
+        <div class="path-head"><h2 class="path-title" id="path-title">Your path today</h2><button type="button" class="path-skip" id="path-skip">Skip for now</button></div>
+        <ol class="path-list" id="path-list"></ol>
+      </div>
+    </section>
+
+    <!-- Personal dashboard (revealed by assets/js/dashboard.js; stays hidden without JS) -->
+    <section class="dash" id="dashboard" aria-labelledby="dash-title" hidden>
+      <div class="dash-inner">
+        <div id="dash-goal" hidden>
+          <p class="grid-kicker">Make it yours</p>
+          <h2 class="dash-title" id="dash-goal-title">What are you here for?</h2>
+          <div class="dash-goals" role="group" aria-labelledby="dash-goal-title">
+            <button type="button" class="dash-btn" data-goal="exam">Exam prep</button>
+            <button type="button" class="dash-btn" data-goal="catchup">Catch up</button>
+            <button type="button" class="dash-btn" data-goal="explore">Just exploring</button>
+          </div>
+          <p class="dash-note">Saved only in this browser. You can change it any time.</p>
+        </div>
+        <div id="dash-main" hidden>
+          <p class="grid-kicker">Your progress</p>
+          <h2 class="dash-title" id="dash-title">Your study dashboard</h2>
+          <p class="dash-note" id="dash-activity"></p>
+          <ol class="dash-week" id="dash-week" aria-label="Answers in the last 7 days"></ol>
+          <div class="dash-top">
+            <article class="dash-card dash-rank-card">
+              <p class="card-eyebrow">Observatory rank</p>
+              <h3 class="dash-card-title" id="dash-rank"></h3>
+              <p class="dash-meta" id="dash-rank-next"></p>
+            </article>
+            <article class="dash-card dash-goal-card">
+              <p class="card-eyebrow">Daily goal</p>
+              <div class="dash-ring" id="dash-ring" aria-hidden="true"></div>
+              <h3 class="dash-card-title" id="dash-goal-text"></h3>
+            </article>
+            <article class="dash-card" id="dash-continue" hidden>
+              <p class="card-eyebrow">Continue</p>
+              <h3 class="dash-card-title" id="dash-continue-label"></h3>
+              <a class="card-link" id="dash-continue-link" href="learn.html">Pick up where you left off <span aria-hidden="true">&rarr;</span></a>
+            </article>
+            <article class="dash-card" id="dash-next">
+              <p class="card-eyebrow">Next best step</p>
+              <h3 class="dash-card-title" id="dash-next-label"></h3>
+              <a class="card-link" id="dash-next-link" href="challenges.html">Go <span aria-hidden="true">&rarr;</span></a>
+            </article>
+          </div>
+          <ul class="dash-topics" id="dash-topics" aria-label="Your topics"></ul>
+          <details class="dash-data">
+            <summary>Your data</summary>
+            <p class="dash-note">Everything is stored in this browser only. Goal: <strong id="dash-goal-now"></strong></p>
+            <div class="dash-goals">
+              <label class="dash-label" for="dash-goal-select">Change goal</label>
+              <select id="dash-goal-select">
+                <option value="exam">Exam prep</option>
+                <option value="catchup">Catch up</option>
+                <option value="explore">Just exploring</option>
+              </select>
+              <button type="button" class="dash-btn" id="dash-export">Export progress</button>
+              <label class="dash-btn" for="dash-import">Import progress</label>
+              <input type="file" id="dash-import" accept="application/json,.json" class="dash-file" />
+              <button type="button" class="dash-btn dash-danger" id="dash-reset">Reset my progress</button>
+            </div>
+          </details>
+          <p class="dash-status" id="dash-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topic ticker -->
+    <div class="ticker" role="group" aria-label="Fields of Grade 11 mathematics">
+      <div class="ticker-track" id="ticker-track">
+        <span class="ticker-item">Functions <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Sequences <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Trigonometry <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Statistics <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Logarithms <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Probability <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Matrices <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Vectors <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Parabolas <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Derivatives <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Integrals <i aria-hidden="true">✳</i></span>
+        <span class="ticker-item">Theorems <i aria-hidden="true">✳</i></span>
+      </div>
+    </div>
+
+    <!-- Sections Grid -->
+    <section class="sections-grid" id="sections">
+      <div class="grid-intro" data-reveal>
+        <p class="grid-kicker">Choose your studio</p>
+        <h2 class="grid-title">Seven ways into mathematics</h2>
+        <p class="grid-sub">
+          Start with the curriculum, then follow your curiosity — sketch a
+          graph, run an experiment, or argue with a proof.
+        </p>
+      </div>
+      <article class="section-card learn">
+        <p class="card-eyebrow">01 · Curriculum</p>
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <path
+              d="M16 9c-3.5-2.5-7.5-2.5-11-1v17c3.5-1.5 7.5-1.5 11 1m0-17c3.5-2.5 7.5-2.5 11-1v17c-3.5-1.5-7.5-1.5-11 1m0-17v17"
+            />
+          </svg>
+        </div>
+        <h2 class="card-title">Learn</h2>
+        <p class="card-description">
+          Structured lessons across the Grade 11 curriculum, from functions
+          and statistics to trigonometry.
+        </p>
+        <div class="card-tags">
+          <span>Functions</span>
+          <span>Statistics</span>
+          <span>Trigonometry</span>
+        </div>
+        <a href="learn.html" class="card-link">Start learning <span class="card-arrow" aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="section-card explore">
+        <p class="card-eyebrow">02 · Curiosity</p>
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <circle cx="14" cy="14" r="8.5" />
+            <path d="m20.5 20.5 6 6" />
+          </svg>
+        </div>
+        <h2 class="card-title">Explore</h2>
+        <p class="card-description">
+          Patterns, constants, and paradoxes — mathematics that lives beyond
+          the textbook.
+        </p>
+        <div class="card-tags">
+          <span>Patterns</span>
+          <span>Constants</span>
+          <span>Paradoxes</span>
+        </div>
+        <a href="explore.html" class="card-link">Start exploring <span class="card-arrow" aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="section-card visualize">
+        <p class="card-eyebrow">03 · Visual</p>
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <path d="M5 27h22M8 27V5M8 23c5-1 6-8 10-8s5 6 9-3" />
+          </svg>
+        </div>
+        <h2 class="card-title">Visualize</h2>
+        <p class="card-description">
+          Change a rule and watch the graph respond — functions, sequences,
+          and data made visible.
+        </p>
+        <div class="card-tags">
+          <span>Graphs</span>
+          <span>Sequences</span>
+          <span>Data</span>
+        </div>
+        <a href="visualize.html" class="card-link">Open the studio <span class="card-arrow" aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="section-card laboratory">
+        <p class="card-eyebrow">04 · Experiment</p>
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <path d="M13 4h6M14 4v8l-7 13a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 21 25l-7-13V4" />
+            <path d="M11 19h9" />
+          </svg>
+        </div>
+        <h2 class="card-title">Laboratory</h2>
+        <p class="card-description">
+          Change one condition, observe the result, and explain the
+          relationship you uncover.
+        </p>
+        <div class="card-tags">
+          <span>Interest</span>
+          <span>Growth</span>
+          <span>Outliers</span>
+        </div>
+        <a href="laboratory.html" class="card-link">Run an experiment <span class="card-arrow" aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="section-card challenges">
+        <p class="card-eyebrow">05 · Practice</p>
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <circle cx="16" cy="16" r="10" />
+            <circle cx="16" cy="16" r="5.5" />
+            <circle cx="16" cy="16" r="1.2" />
+          </svg>
+        </div>
+        <h2 class="card-title">Challenges</h2>
+        <p class="card-description">
+          Curriculum problems with answer checks and worked solutions — retry
+          as often as you like.
+        </p>
+        <div class="card-tags">
+          <span>Finance</span>
+          <span>Sequences</span>
+          <span>Functions</span>
+        </div>
+        <a href="challenges.html" class="card-link">Take a challenge <span class="card-arrow" aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="section-card history">
+        <p class="card-eyebrow">06 · Story</p>
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <circle cx="16" cy="16" r="11" />
+            <path d="M16 9v7l5 3" />
+          </svg>
+        </div>
+        <h2 class="card-title">History</h2>
+        <p class="card-description">
+          Timelines, mathematicians, and breakthroughs — how our
+          understanding came to be.
+        </p>
+        <div class="card-tags">
+          <span>Timeline</span>
+          <span>People</span>
+          <span>Culture</span>
+        </div>
+        <a href="history.html" class="card-link">Travel through time <span class="card-arrow" aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="section-card proofs">
+        <p class="card-eyebrow">07 · Reasoning</p>
+        <div class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <path d="M8 8h16M8 16h12M8 24h8" />
+            <circle cx="5" cy="8" r=".7" />
+            <circle cx="5" cy="16" r=".7" />
+            <circle cx="5" cy="24" r=".7" />
+          </svg>
+        </div>
+        <h2 class="card-title">Why It Works</h2>
+        <p class="card-description">
+          Proofs, derivations, and visual arguments behind the formulas you
+          use every day.
+        </p>
+        <div class="card-tags">
+          <span>Proofs</span>
+          <span>Derivations</span>
+          <span>Intuition</span>
+        </div>
+        <a href="proofs.html" class="card-link">See the proof <span class="card-arrow" aria-hidden="true">→</span></a>
+      </article>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="about-content" data-reveal>
+        <h2 class="section-heading">About This Archive</h2>
+        <p class="about-text">
+          The Mathematics Observatory is an interactive digital experience
+          designed to transform how Grade 11 students engage with mathematics.
+          More than a collection of lessons, it's a journey through the beauty,
+          logic, and power of mathematical thinking.
+        </p>
+        <div class="approach-grid">
+          <div class="approach-item">
+            <span class="approach-number">01</span>
+            <h3>Learn the Fundamentals</h3>
+            <p>Build a solid foundation in core Grade 11 concepts</p>
+          </div>
+          <div class="approach-item">
+            <span class="approach-number">02</span>
+            <h3>Explore Beyond</h3>
+            <p>Discover connections and applications beyond the curriculum</p>
+          </div>
+          <div class="approach-item">
+            <span class="approach-number">03</span>
+            <h3>Visualize & Experiment</h3>
+            <p>See and manipulate mathematical concepts in real-time</p>
+          </div>
+          <div class="approach-item">
+            <span class="approach-number">04</span>
+            <h3>Challenge Yourself</h3>
+            <p>Apply your knowledge through problems and puzzles</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-brand"><a class="site-footer-name" href="index.html">The Mathematics Observatory</a><p>A Grade 11 exploration project</p></div><nav class="site-footer-nav" aria-label="Footer"><ul><li><a href="index.html">Home</a></li><li><a href="learn.html">Learn</a></li><li><a href="explore.html">Explore</a></li><li><a href="visualize.html">Visualize</a></li><li><a href="laboratory.html">Laboratory</a></li><li><a href="challenges.html">Challenges</a></li><li><a href="history.html">History</a></li><li><a href="proofs.html">Why It Works</a></li></ul></nav><ul class="site-footer-meta"><li><a href="docs/references/G11-General-Mathematics.pdf">Curriculum source (PDF)</a></li><li><a href="#">Back to top <span aria-hidden="true">&uarr;</span></a></li></ul></div><p class="site-footer-legal">&copy; 2026 The Mathematics Observatory</p></footer>
+
+    <script src="assets/js/script.js?v=3"></script>
+    <script src="assets/js/progress.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/curriculum-data.js?v=7"></script>
+    <script src="assets/js/math-calculator.js?v=7"></script>
+    <script src="assets/js/assistant-config.js"></script>
+    <script src="assets/js/assistant.js?v=47"></script>
+  </body>
+</html>
