@@ -265,6 +265,7 @@ h4 {
   height: 14px;
   border: 1px solid var(--gold);
   border-radius: 50%;
+  background: transparent;
   content: "";
 }
 
