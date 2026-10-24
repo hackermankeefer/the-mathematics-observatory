@@ -1077,8 +1077,9 @@ h4 {
 }
 
 .formula-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 14px;
 }
 
@@ -1087,6 +1088,8 @@ h4 {
   padding: 27px;
   border: 1px solid var(--rule);
   background: var(--paper);
+  flex: 0 0 auto;
+  width: 360px;
 }
 
 .formula-card h4 {
@@ -2665,10 +2668,10 @@ h4 {
 .people-section .section-heading > p:last-child { color: rgb(243 236 221 / 66%); }
 
 .profile-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: start;
-  gap: 42px 24px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 24px;
   max-width: 1160px;
   margin: 0 auto;
 }
@@ -2676,7 +2679,8 @@ h4 {
 .profile-card {
   display: grid;
   grid-template-rows: 224px minmax(166px, auto) minmax(0, 0fr);
-  width: 100%;
+  flex: 0 0 auto;
+  width: 200px;
   min-width: 0;
   padding: 0;
   overflow: auto;
