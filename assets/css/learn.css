@@ -11,7 +11,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -1304,8 +1304,20 @@ a {
 .topic-card.is-complete{box-shadow:0 0 0 2px var(--topic-color)}
 .read-count.is-bumped{animation:learn-bump 420ms ease}
 .path-step.is-next{border-color:var(--color-purple,#7928b8);box-shadow:4px 4px 0 var(--color-purple,#7928b8)}
+.path-step.is-next{border-color:rgba(255,255,255,.28);box-shadow:none}
 .path-step.is-done .path-number{opacity:.55}
 .next-lesson{font-weight:700}
 @keyframes learn-badge{from{transform:scale(.5);opacity:0}}
 @keyframes learn-bump{40%{transform:scale(1.08)}}
 @media (prefers-reduced-motion:reduce){.course-badge,.read-count.is-bumped{animation:none}}
+
+/* Keep Learn scrolling responsive; section jumps still animate from their click handler. */
+.learn-page .reveal.fun-pre,
+.learn-page .fun-pre {
+  opacity: 1;
+  transform: none;
+}
+
+body.learn-page::after {
+  display: none;
+}

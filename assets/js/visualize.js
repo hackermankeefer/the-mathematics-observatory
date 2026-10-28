@@ -411,7 +411,191 @@
     row.append(title, number); group.append(row, range);
     return group;
   }
+  // Legacy linear visualizer (from legacy/visualizers/linear.html)
+  function legacyLinearInit(container) {
+    const SVG_NS = "http://www.w3.org/2000/svg";
+
+    const legacyHTML = `
+      <div class="legacy-linear-widget">
+        <div class="legend-header">
+          <div class="legend-item">
+            <span class="dot blue"></span>
+            <span>Linear Equation: <span id="lblEquation"></span></span>
+          </div>
+          <div class="legend-item">
+            <span class="dot green"></span>
+            <span style="color: var(--text-muted)">y-intercept <span id="lblYIntCoord"></span></span>
+          </div>
+          <div class="legend-item">
+            <span class="dot orange"></span>
+            <span style="color: var(--text-muted)">x-intercept <span id="lblXIntCoord"></span></span>
+          </div>
+        </div>
+        <div class="graph-frame">
+          <svg viewBox="0 0 440 400">
+            <g id="gridGroup"></g>
+            <g id="axisGroup"></g>
+            <path id="functionLine" class="function-line" d=""></path>
+            <circle id="yInterceptDot" class="node-green" r="6"></circle>
+            <circle id="xInterceptDot" class="node-orange" r="6"></circle>
+          </svg>
+        </div>
+        <div class="metrics-grid">
+          <div><div class="metric-title">Slope (m)</div><div class="metric-value" id="dashM"></div></div>
+          <div><div class="metric-title">y-Intercept (b)</div><div class="metric-value" id="dashB"></div></div>
+          <div><div class="metric-title">x-Intercept</div><div class="metric-value" id="dashX"></div></div>
+        </div>
+        <div class="section-title">Function Presets</div>
+        <div class="presets-row">
+          <button class="preset-btn" data-preset="identity">Identity (x)</button>
+          <button class="preset-btn" data-preset="steep">Steep Slope</button>
+          <button class="preset-btn" data-preset="negative">Negative</button>
+          <button class="preset-btn" data-preset="horizontal">Horizontal</button>
+          <button class="preset-btn active" data-preset="custom">Custom</button>
+        </div>
+        <div class="sliders-container">
+          <div class="slider-wrapper">
+            <div class="slider-header"><span>Slope (m)</span><span class="value-lbl" id="slopeVal"></span></div>
+            <input type="range" id="slopeInput" min="-10" max="10" step="0.1" value="5.0">
+          </div>
+          <div class="slider-wrapper">
+            <div class="slider-header"><span>y-Intercept (b)</span><span class="value-lbl" id="interceptVal"></span></div>
+            <input type="range" id="interceptInput" min="-10" max="10" step="0.1" value="-1.7">
+          </div>
+        </div>
+      </div>`;
+    container.innerHTML = legacyHTML;
+
+    const gridGroup = container.querySelector('#gridGroup');
+    const axisGroup = container.querySelector('#axisGroup');
+    const functionLine = container.querySelector('#functionLine');
+    const yInterceptDot = container.querySelector('#yInterceptDot');
+    const xInterceptDot = container.querySelector('#xInterceptDot');
+    const slopeInput = container.querySelector('#slopeInput');
+    const interceptInput = container.querySelector('#interceptInput');
+    const lblEquation = container.querySelector('#lblEquation');
+    const lblYIntCoord = container.querySelector('#lblYIntCoord');
+    const lblXIntCoord = container.querySelector('#lblXIntCoord');
+    const dashM = container.querySelector('#dashM');
+    const dashB = container.querySelector('#dashB');
+    const dashX = container.querySelector('#dashX');
+    const slopeVal = container.querySelector('#slopeVal');
+    const interceptVal = container.querySelector('#interceptVal');
+    const presetBtns = Array.from(container.querySelectorAll('.preset-btn'));
+    const customBtn = presetBtns.find(b => b.dataset.preset === 'custom');
+    const VIEW_W = 440, VIEW_H = 400, CENTER_X = VIEW_W/2, CENTER_Y = VIEW_H/2, PX_PER_UNIT = 18;
+
+    function fmt(n, digits = 2) { const s = n.toFixed(digits); return Number(s) === 0 ? (0).toFixed(digits) : s; }
+    function makeSvg(tag, attrs) {
+      const el = document.createElementNS(SVG_NS, tag);
+      for (const k in attrs) el.setAttribute(k, attrs[k]);
+      return el;
+    }
+    function initGraph() {
+      for (let i = -12; i <= 12; i += 2) {
+        const px = CENTER_X + i * PX_PER_UNIT, py = CENTER_Y - i * PX_PER_UNIT;
+        if (px >= 0 && px <= VIEW_W) {
+          gridGroup.appendChild(makeSvg('line', { x1: px, y1: 0, x2: px, y2: VIEW_H, class: 'grid-line' }));
+          if (i !== 0) { const t = makeSvg('text', { x: px - 6, y: CENTER_Y + 16, class: 'axis-label' }); t.textContent = i; axisGroup.appendChild(t); }
+        }
+        if (py >= 0 && py <= VIEW_H) {
+          gridGroup.appendChild(makeSvg('line', { x1: 0, y1: py, x2: VIEW_W, y2: py, class: 'grid-line' }));
+          if (i !== 0) { const t = makeSvg('text', { x: CENTER_X - 18, y: py + 4, class: 'axis-label' }); t.textContent = i; axisGroup.appendChild(t); }
+        }
+      }
+      const zero = makeSvg('text', { x: CENTER_X - 12, y: CENTER_Y + 14, class: 'axis-label' }); zero.textContent = '0'; axisGroup.appendChild(zero);
+      axisGroup.appendChild(makeSvg('line', { x1: 0, y1: CENTER_Y, x2: VIEW_W, y2: CENTER_Y, class: 'main-axis' }));
+      axisGroup.appendChild(makeSvg('line', { x1: CENTER_X, y1: 0, x2: CENTER_X, y2: VIEW_H, class: 'main-axis' }));
+    }
+    function buildEquation(m, b) {
+      if (m === 0) return `y = ${fmt(b)}`;
+      const mPart = m === 1 ? '' : m === -1 ? '−' : fmt(m);
+      const bPart = b === 0 ? '' : b > 0 ? ` + ${fmt(b)}` : ` − ${fmt(Math.abs(b))}`;
+      return `y = ${mPart}x${bPart}`;
+    }
+    function drawSystem() {
+      const m = parseFloat(slopeInput.value);
+      const b = parseFloat(interceptInput.value);
+
+      slopeVal.textContent = fmt(m, 1);
+      interceptVal.textContent = fmt(b, 1);
+
+      dashM.textContent = fmt(m, 2);
+      dashB.textContent = fmt(b, 2);
+
+      const xInt = m !== 0 ? -b / m : null;
+      dashX.textContent = xInt !== null ? fmt(xInt, 2) : (b === 0 ? "All x" : "None");
+
+      lblEquation.textContent = buildEquation(m, b);
+      lblYIntCoord.textContent = `(0.0, ${fmt(b, 1)})`;
+      lblXIntCoord.textContent = xInt !== null ? `(${fmt(xInt, 1)}, 0.0)` : "None";
+
+      const x1 = -15, x2 = 15;
+      const px1 = CENTER_X + x1 * PX_PER_UNIT;
+      const py1 = CENTER_Y - (m * x1 + b) * PX_PER_UNIT;
+      const px2 = CENTER_X + x2 * PX_PER_UNIT;
+      const py2 = CENTER_Y - (m * x2 + b) * PX_PER_UNIT;
+      functionLine.setAttribute("d", `M ${px1} ${py1} L ${px2} ${py2}`);
+
+      yInterceptDot.setAttribute("cx", CENTER_X);
+      yInterceptDot.setAttribute("cy", CENTER_Y - b * PX_PER_UNIT);
+
+      if (xInt !== null && isFinite(xInt)) {
+        xInterceptDot.style.display = "block";
+        xInterceptDot.setAttribute("cx", CENTER_X + xInt * PX_PER_UNIT);
+        xInterceptDot.setAttribute("cy", CENTER_Y);
+      } else {
+        xInterceptDot.style.display = "none";
+      }
+    }
+    function applyPreset(btn, m, b) {
+      presetBtns.forEach(el => el.classList.remove('active'));
+      btn.classList.add('active');
+      slopeInput.value = m;
+      interceptInput.value = b;
+      drawSystem();
+    }
+    function setCustomActive() {
+      presetBtns.forEach(el => el.classList.remove('active'));
+      customBtn.classList.add('active');
+    }
+
+    const presetMap = {
+      identity: [1.0, 0.0],
+      steep: [5.0, 0.0],
+      negative: [-2.0, 4.0],
+      horizontal: [0.0, 3.0]
+    };
+    presetBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.dataset.preset === 'custom') { setCustomActive(); return; }
+        const [m, b] = presetMap[btn.dataset.preset] || [0, 0];
+        applyPreset(btn, m, b);
+      });
+    });
+    slopeInput.addEventListener('input', () => { setCustomActive(); drawSystem(); });
+    interceptInput.addEventListener('input', () => { setCustomActive(); drawSystem(); });
+    initGraph();
+    drawSystem();
+  }
+
   function renderStudio(studio) {
+    // If the studio supplies a custom render function (e.g., the legacy linear visualizer),
+    // we bypass the standard slider/control setup and render directly into the workbench.
+    if (typeof studio.render === 'function') {
+      // Hide the default chart and clear any existing controls.
+      chart.hidden = true;
+      controls.replaceChildren();
+      // Find the workbench container (the element that normally holds the chart and controls).
+      const workbench = document.querySelector('.viz-workbench');
+      if (workbench) {
+        // Empty it and let the custom render populate its own UI.
+        workbench.innerHTML = '';
+        studio.render(workbench);
+      }
+      return; // Skip the rest of the standard rendering logic.
+    }
+    // Standard rendering path for built‑in studios.
     heading.textContent = studio.title;
     description.textContent = studio.desc;
     ruleLabel.textContent = 'Current rule';
