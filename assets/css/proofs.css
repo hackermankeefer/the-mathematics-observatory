@@ -422,6 +422,16 @@
   font-style: normal;
 }
 
+.formula-equation { overflow-x: auto; }
+.formula-math .katex { font-size: 1em; }
+.formula-equation .katex-display { margin: 0.15em 0 0; }
+.step-math .katex-display,
+.step-math-final .katex-display,
+.step-math-block .katex-display { margin: 0; }
+.step-math .katex-display,
+.step-math-final .katex-display { text-align: left; }
+.theorem-statement .katex { font-size: 1em; }
+
 .fraction { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.15; vertical-align: middle; }
 .numerator { padding: 0 6px 3px; border: 0; border-bottom: 1.5px solid currentColor; border-radius: 0; }
 .denominator { padding: 3px 6px 0; border: 0; }

@@ -7,7 +7,8 @@
     <meta name="description" content="Discover the reasoning behind mathematical concepts. Understand why formulas work, not just how to use them.">
     <link rel="stylesheet" href="assets/css/styles.css?v=18">
     <link rel="stylesheet" href="assets/css/assistant.css?v=8">
-    <link rel="stylesheet" href="assets/css/proofs.css?v=6">
+    <link rel="stylesheet" href="assets/css/proofs.css?v=7">
+    <link rel="stylesheet" href="/vendor/katex/katex.min.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/fonts/archivo-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/fonts/fonts.css">
@@ -58,7 +59,7 @@
                         <span class="stat-label">Key Concepts</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">25+</span>
+                        <span class="stat-number">4</span>
                         <span class="stat-label">Visual Proofs</span>
                     </div>
                     <div class="stat-item">
@@ -94,7 +95,7 @@
                             </svg>
                         </button>
                         <div class="concept-detail" id="quadratic-detail" hidden>
-                            <p><strong>The Big Idea:</strong> Every quadratic equation can be rewritten as a perfect square plus or minus a constant.</p>
+                            <p><strong>The Big Idea:</strong> When a ≠ 0, completing the square rewrites a quadratic equation as a squared expression equal to a constant.</p>
                             <div class="reasoning-steps">
                                 <div class="step">
                                     <span class="step-number">1</span>
@@ -113,7 +114,7 @@
                                     <p>The result is always <code>(x + b/2a)² = (b² - 4ac)/4a²</code></p>
                                 </div>
                             </div>
-                            <p class="insight"><strong>Insight:</strong> This pattern works for <em>every</em> quadratic because squaring creates symmetry—that's why parabolas are symmetric!</p>
+                            <p class="insight"><strong>Insight:</strong> Completing the square exposes the symmetry of a parabola and turns solving a quadratic into taking square roots.</p>
                         </div>
                     </article>
 
@@ -170,7 +171,7 @@
                             </svg>
                         </button>
                         <div class="concept-detail" id="exponents-detail" hidden>
-                            <p><strong>The Big Idea:</strong> Exponents count how many times you multiply something by itself. The rules emerge naturally from this counting.</p>
+                            <p><strong>The Big Idea:</strong> For positive integer exponents, powers abbreviate repeated multiplication. The familiar exponent rules follow by counting factors; extensions to other exponents preserve those rules where defined.</p>
                             <div class="reasoning-steps">
                                 <div class="step">
                                     <span class="step-number">1</span>
@@ -182,11 +183,11 @@
                                 </div>
                                 <div class="step">
                                     <span class="step-number">3</span>
-                                    <p><code>a^0 = 1</code> because dividing a^n by a^n leaves you with one</p>
+                                    <p><code>a^0 = 1</code> for a ≠ 0, because dividing a^n by a^n leaves one</p>
                                 </div>
                                 <div class="step">
                                     <span class="step-number">4</span>
-                                    <p><code>a^(-n) = 1/a^n</code> to keep the addition rule consistent</p>
+                                    <p><code>a^(-n) = 1/a^n</code> for a ≠ 0, to keep the addition rule consistent</p>
                                 </div>
                             </div>
                             <p class="insight"><strong>Insight:</strong> Each rule is designed to make exponent patterns consistent. Mathematics chooses definitions that preserve patterns!</p>
@@ -211,7 +212,7 @@
                             </svg>
                         </button>
                         <div class="concept-detail" id="trig-detail" hidden>
-                            <p><strong>The Big Idea:</strong> On a circle with radius 1, any point has coordinates (cos θ, sin θ), and the distance from the center is always 1.</p>
+                            <p><strong>The Big Idea:</strong> On the unit circle, the point at angle θ has coordinates (cos θ, sin θ), and its distance from the origin is 1.</p>
                             <div class="reasoning-steps">
                                 <div class="step">
                                     <span class="step-number">1</span>
@@ -234,7 +235,7 @@
                                     <p>Square both sides: cos²θ + sin²θ = 1</p>
                                 </div>
                             </div>
-                            <p class="insight"><strong>Insight:</strong> Every trig identity is a geometric truth about circles and triangles. Algebra just expresses what the shapes already show!</p>
+                            <p class="insight"><strong>Insight:</strong> This identity is a geometric fact about the unit circle, written algebraically.</p>
                         </div>
                     </article>
                 </div>
@@ -262,11 +263,11 @@
                             <div class="formula-display">
                                 <div class="formula-equation">
                                     <span class="formula-name">Quadratic Formula</span>
-                                    <div class="formula-math">x = <span class="fraction"><span class="numerator">-b ± √(b² - 4ac)</span><span class="denominator">2a</span></span></div>
+                                    <div class="formula-math" data-latex="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}">x = (−b ± √(b² − 4ac)) / 2a</div>
                                 </div>
                                 <div class="formula-origin">
                                     <h3>Where It Comes From</h3>
-                                    <p>The quadratic formula is derived by completing the square on the general quadratic equation <code>ax² + bx + c = 0</code>. Ancient Babylonians used geometric methods around 2000 BCE, but the algebraic formula we use today was perfected by Islamic mathematicians like Al-Khwarizmi around 820 CE.</p>
+                                    <p>The quadratic formula follows by completing the square in <code>ax² + bx + c = 0</code>, where a ≠ 0. Babylonian scribes used procedures equivalent to solving some quadratic equations; in the 9th century, al-Khwarizmi gave systematic treatments using rhetorical algebra and geometric arguments. The modern symbolic formula developed much later.</p>
 
                                     <h4>The Derivation Path:</h4>
                                     <ol class="derivation-list">
@@ -291,11 +292,11 @@
                             <div class="formula-display">
                                 <div class="formula-equation">
                                     <span class="formula-name">Distance Formula</span>
-                                    <div class="formula-math">d = √[(x₂ - x₁)² + (y₂ - y₁)²]</div>
+                                    <div class="formula-math" data-latex="d = \sqrt{(x_2-x_1)^2+(y_2-y_1)^2}">d = √[(x₂ − x₁)² + (y₂ − y₁)²]</div>
                                 </div>
                                 <div class="formula-origin">
                                     <h3>Where It Comes From</h3>
-                                    <p>The distance formula is a direct application of the Pythagorean theorem. It was formalized by René Descartes when he invented coordinate geometry in the 1630s, connecting algebra and geometry for the first time.</p>
+                                    <p>The distance formula follows directly from the Pythagorean theorem. René Descartes and Pierre de Fermat independently helped establish analytic geometry in the 17th century, connecting algebraic equations with geometric curves and points.</p>
 
                                     <h4>The Derivation Path:</h4>
                                     <ol class="derivation-list">
@@ -308,7 +309,7 @@
                                     </ol>
 
                                     <div class="formula-insight">
-                                        <strong>Why It Matters:</strong> This formula works in any coordinate system and extends to 3D as <code>√[(x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²]</code>. It's the foundation of all distance measurements in mathematics.
+                                        <strong>Why It Matters:</strong> This formula extends to 3D as <code>√[(x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²]</code>, and to higher-dimensional Euclidean space by adding one squared coordinate difference per dimension.
                                     </div>
                                 </div>
                             </div>
@@ -318,11 +319,11 @@
                             <div class="formula-display">
                                 <div class="formula-equation">
                                     <span class="formula-name">Slope Formula</span>
-                                    <div class="formula-math">m = <span class="fraction"><span class="numerator">y₂ - y₁</span><span class="denominator">x₂ - x₁</span></span> = <span class="fraction"><span class="numerator">rise</span><span class="denominator">run</span></span></div>
+                                    <div class="formula-math" data-latex="m = \frac{y_2-y_1}{x_2-x_1} = \frac{\text{rise}}{\text{run}}">m = (y₂ − y₁)/(x₂ − x₁) = rise/run</div>
                                 </div>
                                 <div class="formula-origin">
                                     <h3>Where It Comes From</h3>
-                                    <p>Slope measures steepness—how much y changes for each unit of x change. The concept emerged from calculus (rates of change) and was standardized with coordinate geometry.</p>
+                                    <p>Slope measures steepness: the vertical change divided by the horizontal change. Coordinate geometry made this ratio a standard way to describe lines; calculus later extended the idea to instantaneous rates of change.</p>
 
                                     <h4>The Reasoning:</h4>
                                     <ol class="derivation-list">
@@ -334,7 +335,7 @@
                                     </ol>
 
                                     <div class="formula-insight">
-                                        <strong>Why It Matters:</strong> Slope = 0 means horizontal, undefined slope means vertical, positive means upward, negative means downward. Parallel lines have equal slopes, perpendicular lines have slopes that multiply to -1.
+                                        <strong>Why It Matters:</strong> A slope of 0 means horizontal; a vertical line has undefined slope. Parallel lines have equal slopes. Two nonvertical perpendicular lines have slopes whose product is −1; a vertical line is perpendicular to a horizontal line.
                                     </div>
                                 </div>
                             </div>
@@ -359,7 +360,7 @@
                                     </ol>
 
                                     <div class="formula-insight">
-                                        <strong>Why It Matters:</strong> Every point satisfying this equation is exactly r units from (h, k). Expanding gives <code>x² + y² + Dx + Ey + F = 0</code>, which you can complete the square on to find center and radius.
+                                        <strong>Why It Matters:</strong> Every point satisfying this equation is exactly r units from (h, k). Expanding gives <code>x² + y² + Dx + Ey + F = 0</code>; completing the square recovers the center and radius when the equation represents a real circle.
                                     </div>
                                 </div>
                             </div>
@@ -598,7 +599,7 @@
                                     <div class="step-content">
                                         <p><strong>Divide by 2:</strong></p>
                                         <p class="step-math-final">S = n/2 · [2a + (n-1)d] = n/2 · (first + last)</p>
-                                        <p class="step-insight">The sum is just: (number of terms) × (average of first and last) / 2. This elegant pattern appears everywhere in mathematics!</p>
+                                        <p class="step-insight">The sum is the number of terms multiplied by the average of the first and last terms.</p>
                                     </div>
                                 </div>
                             </div>
@@ -686,9 +687,9 @@
                                         </button>
                                     </div>
                                     <div class="step-content">
-                                        <p><strong>Divide by (1 - r):</strong></p>
+                                        <p><strong>For r ≠ 1, divide by (1 − r):</strong></p>
                                         <p class="step-math-final">S = a(1 - r^n)/(1 - r)</p>
-                                        <p class="step-insight">For infinite series with |r| &lt; 1, as n→∞, r^n→0, giving S = a/(1-r). This describes everything from compound interest to fractal patterns!</p>
+                                        <p class="step-insight">If r = 1, the finite sum is na. If |r| &lt; 1, then r^n → 0 as n → ∞, so the infinite series converges to a/(1 − r).</p>
                                     </div>
                                 </div>
                             </div>
@@ -750,8 +751,8 @@
                                         </button>
                                     </div>
                                     <div class="step-content">
-                                        <p><strong>Count the ways to get a^k·b^(n-k):</strong></p>
-                                        <p class="step-explanation">To get a^k·b^(n-k), you must pick 'a' from k of the n factors and 'b' from the remaining (n-k) factors.</p>
+                                        <p><strong>Count the ways to get a^(n-k)·b^k:</strong></p>
+                                        <p class="step-explanation">To get a^(n-k)·b^k, choose the k factors that contribute b; the remaining n-k factors contribute a. There are C(n,k) such choices.</p>
                                         <p class="step-math">Number of ways = C(n,k) = n!/(k!(n-k)!)</p>
                                     </div>
                                 </div>
@@ -768,11 +769,11 @@
                                     <div class="step-content">
                                         <p><strong>These are Pascal's Triangle numbers!</strong></p>
                                         <div class="step-math-block">
-                                            <p style="text-align: center;">1</p>
-                                            <p style="text-align: center;">1  1</p>
-                                            <p style="text-align: center;">1  2  1</p>
-                                            <p style="text-align: center;">1  3  3  1</p>
-                                            <p style="text-align: center;">1  4  6  4  1</p>
+                                            <p style="text-align: center;" data-latex="1">1</p>
+                                            <p style="text-align: center;" data-latex="1\quad 1">1  1</p>
+                                            <p style="text-align: center;" data-latex="1\quad 2\quad 1">1  2  1</p>
+                                            <p style="text-align: center;" data-latex="1\quad 3\quad 3\quad 1">1  3  3  1</p>
+                                            <p style="text-align: center;" data-latex="1\quad 4\quad 6\quad 4\quad 1">1  4  6  4  1</p>
                                         </div>
                                         <p class="step-explanation">Each number is the sum of the two above it, which matches C(n,k) = C(n-1,k-1) + C(n-1,k)</p>
                                     </div>
@@ -789,7 +790,7 @@
                                     </div>
                                     <div class="step-content">
                                         <p><strong>The Binomial Theorem:</strong></p>
-                                        <p class="step-math-final">(a + b)^n = Σ C(n,k) · a^(n-k) · b^k</p>
+                                        <p class="step-math-final" data-latex="(a+b)^n = \sum_{k=0}^{n} \binom{n}{k}a^{n-k}b^k">(a + b)^n = Σ C(n,k) · a^(n-k) · b^k, for k = 0, …, n</p>
                                         <p class="step-insight">The coefficient of each term is the number of ways to select which factors contribute 'a' vs 'b'. Combinatorics and algebra unite!</p>
                                     </div>
                                 </div>
@@ -879,12 +880,12 @@
                             <div class="theorem-icon">∫</div>
                             <div class="theorem-title-block">
                                 <h3>Fundamental Theorem of Calculus</h3>
-                                <p class="theorem-statement">∫[a to b] f'(x)dx = f(b) - f(a)</p>
+                                <p class="theorem-statement" data-latex="\int_a^b f'(x)\,dx = f(b)-f(a)">∫[a to b] f'(x)dx = f(b) − f(a)</p>
                             </div>
                         </div>
                         <div class="theorem-body">
-                            <p class="theorem-meaning"><strong>What it means:</strong> The area under a rate-of-change curve equals the total change. Integration and differentiation are inverse operations.</p>
-                            <p class="theorem-why"><strong>Why it works:</strong> Think of driving a car. If you know your velocity at every moment (the derivative), adding up all those tiny velocity×time products (the integral) gives your total distance traveled (the change in position).</p>
+                            <p class="theorem-meaning"><strong>What it means:</strong> When f' is continuous on [a, b], the signed area under its graph equals f(b) − f(a). Integration and differentiation are inverse operations.</p>
+                            <p class="theorem-why"><strong>Why it works:</strong> If velocity is known at every moment, integrating it over a time interval gives the change in position (net displacement). Integrating speed instead gives total distance traveled.</p>
                             <p class="theorem-impact"><strong>Why it matters:</strong> This theorem connects two seemingly different ideas—slopes (derivatives) and areas (integrals)—revealing they're two sides of the same coin. It's the foundation of all calculus.</p>
                         </div>
                     </article>
@@ -894,7 +895,7 @@
                             <div class="theorem-icon">π</div>
                             <div class="theorem-title-block">
                                 <h3>Euler's Identity</h3>
-                                <p class="theorem-statement">e^(iπ) + 1 = 0</p>
+                                <p class="theorem-statement" data-latex="e^{i\pi}+1=0">e^(iπ) + 1 = 0</p>
                             </div>
                         </div>
                         <div class="theorem-body">
@@ -928,9 +929,9 @@
                             </div>
                         </div>
                         <div class="theorem-body">
-                            <p class="theorem-meaning"><strong>What it means:</strong> As you collect more data, the average of your observations gets closer and closer to the true population average.</p>
-                            <p class="theorem-why"><strong>Why it works:</strong> Random fluctuations tend to cancel out over many trials. Individual variations balance out, revealing the underlying pattern.</p>
-                            <p class="theorem-impact"><strong>Why it matters:</strong> This is why statistics works! It justifies using sample data to make inferences about populations and explains why casinos always win in the long run.</p>
+                            <p class="theorem-meaning"><strong>What it means:</strong> For independent, identically distributed observations with a finite mean, the sample average converges to the population mean as the sample size grows.</p>
+                            <p class="theorem-why"><strong>Why it works:</strong> With many independent observations, unusually high and low values tend to balance, so the average stabilizes near the expected value.</p>
+                            <p class="theorem-impact"><strong>Why it matters:</strong> Under its assumptions, the theorem explains why sample averages become reliable estimates of a population mean as the sample grows. A casino game's positive expected house edge similarly makes its average net gain per play approach that edge over many independent plays.</p>
                         </div>
                     </article>
                 </div>
@@ -963,7 +964,7 @@
                                     <li>For 0 ÷ 0, <em>every</em> number works: 0 × anything = 0</li>
                                     <li>So 6 ÷ 0 has no answer, and 0 ÷ 0 has infinitely many answers</li>
                                 </ol>
-                                <p class="insight-box"><strong>The insight:</strong> Division by zero doesn't produce infinity or error—it breaks the definition of division itself. Mathematics must be consistent, so we declare it undefined.</p>
+                                <p class="insight-box"><strong>The insight:</strong> In real arithmetic, division by zero has no defined value: there is no quotient that satisfies the inverse-of-multiplication definition. Assigning it a value would break the usual arithmetic rules.</p>
                             </div>
                         </div>
                     </article>
@@ -996,7 +997,7 @@
                             <span class="difficulty-badge">Pattern Recognition</span>
                         </div>
                         <div class="challenge-content">
-                            <p class="challenge-question">0! means "multiply all positive integers up to 0." That's nothing—so why isn't it 0?</p>
+                            <p class="challenge-question">The product 1 · 2 · … · n has no factors when n = 0. Why is the empty product defined as 1, so that 0! = 1?</p>
                             <button class="reveal-btn" data-target="challenge-3-answer">Show Reasoning</button>
                             <div class="challenge-answer" id="challenge-3-answer" hidden>
                                 <p><strong>The reasoning:</strong></p>
@@ -1023,13 +1024,13 @@
                             <button class="reveal-btn" data-target="challenge-4-answer">Show Reasoning</button>
                             <div class="challenge-answer" id="challenge-4-answer" hidden>
                                 <p><strong>The reasoning:</strong></p>
-                                <p><strong>For negative exponents:</strong></p>
+                                <p><strong>For negative exponents (a ≠ 0):</strong></p>
                                 <ol>
                                     <li>We want a^m × a^n = a^(m+n) to always work</li>
                                     <li>So: a^2 × a^(-2) should equal a^(2 + (-2)) = a^0 = 1</li>
                                     <li>That means a^(-2) = 1/a^2 (the reciprocal)</li>
                                 </ol>
-                                <p><strong>For fractional exponents:</strong></p>
+                                <p><strong>For fractional exponents (for real square roots, a ≥ 0):</strong></p>
                                 <ol>
                                     <li>We want (a^m)^n = a^(mn) to always work</li>
                                     <li>So: (a^(1/2))^2 should equal a^(1/2 × 2) = a^1 = a</li>
@@ -1057,7 +1058,8 @@
     <script src="assets/js/math-calculator.js?v=7"></script>
     <script src="assets/js/assistant-config.js"></script>
     <script src="assets/js/assistant.js?v=47"></script>
-    <script src="assets/js/proofs.js"></script>
+    <script src="/vendor/katex/katex.min.js"></script>
+    <script src="assets/js/proofs.js?v=2"></script>
 <script defer src="assets/js/progress.js"></script><script defer src="assets/js/topic-chip.js"></script>
 </body>
 </html>

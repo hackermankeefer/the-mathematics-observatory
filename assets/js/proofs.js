@@ -3,6 +3,7 @@
 // =========================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    renderProofMath();
     initHeroAnimation();
     initIntuitionCards();
     initFormulaTabs();
@@ -10,6 +11,42 @@ document.addEventListener('DOMContentLoaded', function() {
     initVisualProofs();
     initChallengeReveals();
 });
+
+function renderProofMath() {
+    if (!window.katex) return;
+
+    const symbols = { '²': '^{2}', '³': '^{3}', '¹': '^{1}', '⁰': '^{0}', 'ⁿ': '^{n}', '₁': '_{1}', '₂': '_{2}', '₃': '_{3}', 'θ': '\\theta', 'π': '\\pi', '∞': '\\infty', '±': '\\pm', '·': '\\cdot', '×': '\\times', '→': '\\to', '−': '-' };
+    const toLatex = value => {
+        let latex = value.trim()
+            .replace(/Σn²/g, '\\sum_{k=1}^{n} k^2')
+            .replace(/Σ\s*C\(n,k\)\s*·\s*a\^\(n-k\)\s*·\s*b\^k/g, '\\sum_{k=0}^{n} \\binom{n}{k}a^{n-k}b^k')
+            .replace(/C\(([^,()]+),\s*([^()]+)\)/g, '\\binom{$1}{$2}')
+            .replace(/[²³¹⁰ⁿ₁₂₃θπ∞±·×→−]/g, symbol => symbols[symbol]);
+
+        latex = latex.replace(/\^\(([^()]*)\)/g, '^{$1}');
+        latex = latex.replace(/√\[([^\]]+)\]/g, '\\sqrt{$1}');
+        latex = latex.replace(/√\(([^()]*(?:\([^()]*\)[^()]*)*)\)/g, '\\sqrt{$1}');
+        latex = latex.replace(/\br\s*=\s*0\b/g, 'r=0');
+        return latex;
+    };
+
+    const mathNodes = document.querySelectorAll('.proofs-page code, .formula-math, .step-math, .step-math-final, .step-math-block p, .theorem-statement[data-latex]');
+    mathNodes.forEach(node => {
+        if (node.closest('.katex')) return;
+        const source = node.dataset.latex || node.textContent;
+        if (!source.trim() || /^\.{3,}$/.test(source.trim())) return;
+        try {
+            window.katex.render(node.dataset.latex || toLatex(source), node, {
+                displayMode: node.matches('.formula-math, .step-math, .step-math-final, .step-math-block p'),
+                throwOnError: false,
+                strict: 'ignore',
+                output: 'htmlAndMathml'
+            });
+        } catch (error) {
+            console.warn('Could not typeset proof formula:', source, error);
+        }
+    });
+}
 
 // =========================================
 // Hero Canvas Animation
