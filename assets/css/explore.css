@@ -528,53 +528,6 @@
     margin-bottom: 42px;
 }
 
-.explore-page .explore-theme-toggle {
-    position: fixed;
-    z-index: 999;
-    top: 86px;
-    right: clamp(16px, 4vw, 48px);
-    min-height: 42px;
-    flex: 0 0 auto;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    margin-bottom: 5px;
-    padding: 0 14px;
-    border: 1px solid var(--ex-line);
-    border-radius: 999px;
-    color: var(--ex-ink);
-    background: var(--ex-white);
-    font-size: 0.78rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
-}
-
-.explore-page .explore-theme-toggle:hover {
-    transform: translateY(-1px);
-    border-color: rgba(124, 87, 220, 0.45);
-}
-
-.explore-page .explore-theme-toggle > span:first-child {
-    color: #8160b6;
-    font-size: 1.1rem;
-    line-height: 1;
-}
-
-.explore-page .explore-theme-toggle:focus-visible {
-    outline: 3px solid rgba(129, 96, 182, 0.4);
-    outline-offset: 3px;
-}
-
-@media (max-width: 768px) {
-    .explore-page .explore-theme-toggle {
-        top: 80px;
-        right: 14px;
-        min-height: 40px;
-    }
-}
-
 .explore-page .section-heading h2 {
     margin: 0;
     font-family: "Archivo Black", "Archivo", sans-serif;
@@ -1805,16 +1758,6 @@
     background: #2E2642;
 }
 
-.explore-page[data-theme="dark"] .explore-theme-toggle {
-    border-color: rgba(246, 241, 231, 0.85);
-    color: #F6F1E7;
-    background: #2E2642;
-}
-
-.explore-page[data-theme="dark"] .explore-theme-toggle > span:first-child {
-    color: var(--ex-lime);
-}
-
 /* Pinned-ink surfaces: these keep light backgrounds in dark mode, so their
    text must stay dark instead of following --ex-ink. */
 .explore-page[data-theme="dark"] .floating-equation {
@@ -1880,9 +1823,6 @@
 .explore-page .path-index,
 .explore-page .floating-equation,
 .explore-page .piecewise-rules-toggle,
-.explore-page .explore-theme-toggle {
-    transition: color 260ms ease, background 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
-}
 
 .explore-page .formula-card {
     transition: transform 160ms ease, color 260ms ease, background 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
@@ -1928,8 +1868,7 @@
     .explore-page .formula-filter,
     .explore-page .path-card,
     .explore-page .path-card > p,
-    .explore-page .path-index,
-    .explore-page .explore-theme-toggle {
+    .explore-page .path-index {
         transition-duration: 0.01ms;
     }
 }
@@ -2186,10 +2125,9 @@
     padding-bottom: 6px;
     scrollbar-width: thin;
 }
-.explore-page .difficulty-button { min-height: 44px; }
+    .explore-page .difficulty-button { min-height: 44px; }
 
 /* ---- a11y sweep: 44px tap targets ---- */
-.explore-page .explore-theme-toggle { min-height:44px; }
 .explore-page .search-field input { min-height:44px; }
 .explore-page .button { min-height:44px; }
 .explore-page a[href="#formula-lab"] { display:inline-flex; align-items:center; min-height:44px; }

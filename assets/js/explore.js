@@ -370,37 +370,7 @@ function setupFormulaExplorer() {
   const answer = document.getElementById("student-answer");
   const difficultyButtons = document.querySelectorAll(".difficulty-button");
   const piecewiseToggle = document.getElementById("piecewise-rules-toggle");
-  const themeToggle = document.getElementById("explore-theme-toggle");
   if (!search) return;
-
-  const applyTheme = (theme, persist = false) => {
-    const isDark = theme === "dark";
-    document.body.dataset.theme = isDark ? "dark" : "light";
-    if (themeToggle) {
-      themeToggle.setAttribute("aria-pressed", String(isDark));
-      themeToggle.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} mode`);
-      themeToggle.querySelector(".theme-toggle-label").textContent = isDark ? "Light mode" : "Dark mode";
-      themeToggle.querySelector("[aria-hidden='true']").textContent = isDark ? "☀" : "◐";
-    }
-    if (persist) {
-      try {
-        localStorage.setItem("explore-color-theme", isDark ? "dark" : "light");
-      } catch {
-        // The theme still applies for this visit if storage is unavailable.
-      }
-    }
-  };
-
-  let savedTheme = "light";
-  try {
-    savedTheme = localStorage.getItem("explore-color-theme") || "light";
-  } catch {
-    // Use the light theme when browser storage is unavailable.
-  }
-  applyTheme(savedTheme);
-  themeToggle?.addEventListener("click", () => {
-    applyTheme(document.body.dataset.theme === "dark" ? "light" : "dark", true);
-  });
 
   const formulaDisplay = document.querySelector(".formula-display");
   if (formulaDisplay && "ResizeObserver" in window) {
