@@ -1321,3 +1321,9 @@ a {
 body.learn-page::after {
   display: none;
 }
+
+/* The fixed global header overlays the Learn hero; don't reserve a second header gap. */
+.learn-page { padding-top: 0; }
+@media (max-width: 620px) {
+  .learn-page { padding-top: 56px; }
+}

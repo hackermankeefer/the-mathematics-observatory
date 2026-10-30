@@ -1,7 +1,7 @@
 /* Shared dark palette. History intentionally has no dark-mode support. */
 :root[data-theme="dark"] body:not(.history-page) {
   color-scheme: dark;
-  --color-ink: #f4f0f8;
+  --color-ink: #f2edf7;
   --color-ink-soft: #c9c1d1;
   --color-cream: #17151d;
   --color-paper: #24212c;
@@ -20,25 +20,25 @@
   --home-plum: #ddc9ff;
   --home-violet: #c6b5ff;
   --home-coral: #ffb09b;
-  --home-lime: #57491f;
-  --home-mint: #1d4034;
-  --home-sky: #20384c;
+  --home-lime: #604b78;
+  --home-mint: #26364a;
+  --home-sky: #30314a;
   --home-blush: #482b37;
   --home-lav: #342d49;
-  --home-peach: #493723;
+  --home-peach: #49364f;
   --op-paper: #19171f;
   --op-card: #24212b;
   --op-ink: #f5f0f8;
   --op-muted: #c9c1d1;
   --op-plum: #decaff;
   --op-violet: #c5b3ff;
-  --op-coral: #633c37;
-  --op-lime: #51441e;
-  --op-mint: #1d4033;
-  --op-sky: #1f3b4e;
+  --op-coral: #684052;
+  --op-lime: #604b78;
+  --op-mint: #26364a;
+  --op-sky: #30314a;
   --op-blush: #492c38;
   --op-lav: #342d49;
-  --op-peach: #493622;
+  --op-peach: #49364f;
   --op-line: rgba(239, 231, 248, 0.2);
   --op-accent: #d3c1ff;
   --op-accent-deep: #e2d5ff;
@@ -48,16 +48,16 @@
   --ex-night-2: #ccb8ff;
   --ex-lilac: #c5b3ff;
   --ex-lilac-soft: #342d49;
-  --ex-lime: #51441e;
-  --ex-coral: #633c37;
-  --ex-blue: #1f3b4e;
+  --ex-lime: #604b78;
+  --ex-coral: #70465a;
+  --ex-blue: #30314a;
   --ex-paper: #19171f;
   --ex-white: #24212b;
   --ex-line: rgba(239, 231, 248, 0.2);
   --ex-shadow: 5px 5px 0 rgba(0, 0, 0, 0.55);
   --hd-ink: #f5f0f8;
   --hd-paper: #211e28;
-  --hd-chip: #55461f;
+  --hd-chip: #574568;
   --hd-blush: #492c38;
   background: var(--op-paper);
   color: var(--op-ink);
@@ -66,7 +66,7 @@
 :root[data-theme="dark"] .site-header {
   --hd-ink: #f5f0f8;
   --hd-paper: #211e28;
-  --hd-chip: #55461f;
+  --hd-chip: #574568;
   --hd-blush: #492c38;
 }
 
@@ -99,6 +99,26 @@
 :root[data-theme="dark"] .site-header .menu-toggle { background: var(--hd-blush); }
 :root[data-theme="dark"] .site-header .menu-toggle { color: var(--hd-ink); }
 
+@media (max-width: 1200px) {
+  :root[data-theme="dark"] .site-header .main-nav .nav-links {
+    border-color: #786e84;
+    background: #211e28;
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.46);
+  }
+}
+:root[data-theme="dark"] .site-header .main-nav .nav-links .nav-link { color: #d8c9ec; }
+:root[data-theme="dark"] .site-header .main-nav .nav-links .nav-link:hover,
+:root[data-theme="dark"] .site-header .main-nav .nav-links .nav-link:focus-visible {
+  color: #fff;
+  border-color: #9d8ab9;
+  background: #342d49;
+}
+:root[data-theme="dark"] .site-header .main-nav .nav-links .nav-link.active {
+  color: #fff;
+  border-color: #cbb8ed;
+  background: #604b78;
+}
+
 :root[data-theme="dark"] .home-page .nav-link { color: #d3cbdc; }
 :root[data-theme="dark"] .home-page .nav-link:hover,
 :root[data-theme="dark"] .home-page .nav-link.active { color: var(--home-ink); }
@@ -110,7 +130,8 @@
 :root[data-theme="dark"] .home-page .card-eyebrow { color: #f0b6ca; }
 :root[data-theme="dark"] .home-page .approach-grid,
 :root[data-theme="dark"] .home-page .approach-item + .approach-item { border-color: var(--op-line); }
-:root[data-theme="dark"] .home-page .section-card.learn { background: linear-gradient(135deg, #342d49, #482b37 60%, #493723); }
+:root[data-theme="dark"] .home-page .section-card.learn { background: linear-gradient(135deg, #342d49, #482b37 60%, #49364f); }
+:root[data-theme="dark"] .home-page .section-card.history { --accent-color: #d5c3f7; }
 :root[data-theme="dark"] .home-page .section-card.learn .card-tags span,
 :root[data-theme="dark"] .home-page .section-card.learn .card-link { color: var(--home-ink); border-color: var(--op-line); background: rgba(255,255,255,.08); }
 :root[data-theme="dark"] .home-page .section-card:not(.learn) { color: var(--home-ink); }
@@ -146,6 +167,26 @@
 :root[data-theme="dark"] .explore-page .button-primary { color: #fff; background: #594b79; }
 :root[data-theme="dark"] .explore-page :is(.formula-card h2, .path-card h2, .formula-panel h2, .explore-card h3) { color: var(--ex-ink); }
 :root[data-theme="dark"] .explore-page code { color: #e1d3ff; background: #382f49; }
+:root[data-theme="dark"] .explore-page :is(.practice-kicker, .solution-heading) { color: #d5c3f7; }
+:root[data-theme="dark"] .explore-page .study-strip a { color: #d5c3f7; }
+:root[data-theme="dark"] .explore-page .practice-feedback.success { color: #91e0ae; }
+:root[data-theme="dark"] .explore-page .button-dark {
+  color: #fff;
+  background: #604b78;
+  border-color: #cbb8ed;
+}
+:root[data-theme="dark"] .explore-page .button-light {
+  color: #282435;
+  background: #eee9f3;
+  border-color: #d8cee5;
+}
+:root[data-theme="dark"] .explore-page .button-light:hover,
+:root[data-theme="dark"] .explore-page .button-light:focus-visible { color: #201a2a; background: #fff; }
+:root[data-theme="dark"] .explore-page :is(.difficulty-button[aria-pressed="true"], .difficulty-button:hover, .formula-filter.is-active, .formula-filter.is-active:hover) {
+  color: #fff;
+  border-color: #cbb8ed;
+  background: #604b78;
+}
 
 :root[data-theme="dark"] .learn-page .topic-strip,
 :root[data-theme="dark"] .learn-page .course-finder,
@@ -174,7 +215,7 @@
 :root[data-theme="dark"] .proofs-page .reasoning-cta { background: #30283c; }
 :root[data-theme="dark"] .proofs-page .reasoning-cta h3 { color: #fff; }
 :root[data-theme="dark"] .proofs-page :is(.formula-tab, .step-toggle, .derivation-btn, .animate-btn, .explore-btn, .reveal-btn) { color: var(--op-ink); background-color: var(--op-card); }
-:root[data-theme="dark"] .proofs-page .formula-tab.active { color: #fff; background: #55461f; }
+:root[data-theme="dark"] .proofs-page .formula-tab.active { color: #fff; background: #604b78; }
 
 :root[data-theme="dark"] .laboratory-page :is(.lab-notes, .lab-observation, .lab-result-card, .lab-queue, .lab-question-card) {
   color: var(--op-ink);
@@ -187,7 +228,8 @@
   background: #201d27;
   border-color: #786e84;
 }
-:root[data-theme="dark"] .laboratory-page .lab-control-rail { --op-lime: #f0d47d; --op-accent: #88d8ad; }
+:root[data-theme="dark"] .laboratory-page .lab-control-rail { --op-accent: #c8b2f4; }
+:root[data-theme="dark"] .laboratory-page .lab-control-rail :is(.op-kicker, .lab-control small, .lab-input-wrap, .lab-range-row output) { color: #d5c3f7; }
 
 :root[data-theme="dark"] .challenges-page :is(.challenge-card, .challenge-feature, .challenge-prompt, .challenge-search, .challenge-answer-row input) {
   color: var(--op-ink);
@@ -205,6 +247,18 @@
   border-color: var(--op-line);
 }
 :root[data-theme="dark"] .visualize-page .viz-chart-wrap { background: #201d27; }
+:root[data-theme="dark"] .visualize-page .op-text-button {
+  color: #282435;
+  background: #eee9f3;
+  border-color: #d8cee5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+}
+:root[data-theme="dark"] .visualize-page .op-text-button:hover,
+:root[data-theme="dark"] .visualize-page .op-text-button:focus-visible {
+  color: #fff;
+  background: #604b78;
+  border-color: #cbb8ed;
+}
 :root[data-theme="dark"] .visualize-page .viz-chart-caption { color: #d0c8d9; }
 :root[data-theme="dark"] .visualize-page :is(.viz-alt-visual table, .viz-alt-visual th, .viz-alt-visual td) { color: var(--op-ink); border-color: var(--op-line); }
 :root[data-theme="dark"] .visualize-page :is(select, input, textarea) { color: var(--op-ink); background: #201d27; border-color: #786e84; }

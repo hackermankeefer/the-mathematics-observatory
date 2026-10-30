@@ -36,8 +36,9 @@
   const studios = {
     linear: {
       title: 'Linear functions',
-      desc: 'Drag the slope and intercept sliders to reshape y = mx + b. Watch the rise-over-run triangle, intercepts, and inclination update live.',
-      params: [['slope','Slope m',1,-5,5,.0001],['intercept','Intercept b',0,-5,5,.001],['x','Inspect x',0,-5,5,.01]],
+      desc: 'Adjust the slope and y-intercept to see how they change a line and its intercepts.',
+      legacyLinearOutput: true,
+      params: [['slope','Slope m',1,-5,5,.0001],['intercept','Intercept b',0,-5,5,.001]],
       // Match the 600:330 data viewport ratio so one x-unit and one y-unit
       // occupy the same number of SVG pixels (square coordinate cells).
       bounds: { xmin:-300/11, xmax:300/11, ymin:-15, ymax:15, equalScale:true },
@@ -432,7 +433,7 @@
           </div>
         </div>
         <div class="graph-frame">
-          <svg viewBox="0 0 440 400">
+          <svg viewBox="0 0 440 400" role="img" aria-label="Coordinate graph of the selected linear equation">
             <g id="gridGroup"></g>
             <g id="axisGroup"></g>
             <path id="functionLine" class="function-line" d=""></path>
@@ -446,23 +447,6 @@
           <div><div class="metric-title">x-Intercept</div><div class="metric-value" id="dashX"></div></div>
         </div>
         <div class="section-title">Function Presets</div>
-        <div class="presets-row">
-          <button class="preset-btn" data-preset="identity">Identity (x)</button>
-          <button class="preset-btn" data-preset="steep">Steep Slope</button>
-          <button class="preset-btn" data-preset="negative">Negative</button>
-          <button class="preset-btn" data-preset="horizontal">Horizontal</button>
-          <button class="preset-btn active" data-preset="custom">Custom</button>
-        </div>
-        <div class="sliders-container">
-          <div class="slider-wrapper">
-            <div class="slider-header"><span>Slope (m)</span><span class="value-lbl" id="slopeVal"></span></div>
-            <input type="range" id="slopeInput" min="-10" max="10" step="0.1" value="5.0">
-          </div>
-          <div class="slider-wrapper">
-            <div class="slider-header"><span>y-Intercept (b)</span><span class="value-lbl" id="interceptVal"></span></div>
-            <input type="range" id="interceptInput" min="-10" max="10" step="0.1" value="-1.7">
-          </div>
-        </div>
       </div>`;
     container.innerHTML = legacyHTML;
 
@@ -471,18 +455,12 @@
     const functionLine = container.querySelector('#functionLine');
     const yInterceptDot = container.querySelector('#yInterceptDot');
     const xInterceptDot = container.querySelector('#xInterceptDot');
-    const slopeInput = container.querySelector('#slopeInput');
-    const interceptInput = container.querySelector('#interceptInput');
     const lblEquation = container.querySelector('#lblEquation');
     const lblYIntCoord = container.querySelector('#lblYIntCoord');
     const lblXIntCoord = container.querySelector('#lblXIntCoord');
     const dashM = container.querySelector('#dashM');
     const dashB = container.querySelector('#dashB');
     const dashX = container.querySelector('#dashX');
-    const slopeVal = container.querySelector('#slopeVal');
-    const interceptVal = container.querySelector('#interceptVal');
-    const presetBtns = Array.from(container.querySelectorAll('.preset-btn'));
-    const customBtn = presetBtns.find(b => b.dataset.preset === 'custom');
     const VIEW_W = 440, VIEW_H = 400, CENTER_X = VIEW_W/2, CENTER_Y = VIEW_H/2, PX_PER_UNIT = 18;
 
     function fmt(n, digits = 2) { const s = n.toFixed(digits); return Number(s) === 0 ? (0).toFixed(digits) : s; }
@@ -513,13 +491,7 @@
       const bPart = b === 0 ? '' : b > 0 ? ` + ${fmt(b)}` : ` − ${fmt(Math.abs(b))}`;
       return `y = ${mPart}x${bPart}`;
     }
-    function drawSystem() {
-      const m = parseFloat(slopeInput.value);
-      const b = parseFloat(interceptInput.value);
-
-      slopeVal.textContent = fmt(m, 1);
-      interceptVal.textContent = fmt(b, 1);
-
+    function drawSystem(m, b) {
       dashM.textContent = fmt(m, 2);
       dashB.textContent = fmt(b, 2);
 
@@ -548,54 +520,25 @@
         xInterceptDot.style.display = "none";
       }
     }
-    function applyPreset(btn, m, b) {
-      presetBtns.forEach(el => el.classList.remove('active'));
-      btn.classList.add('active');
-      slopeInput.value = m;
-      interceptInput.value = b;
-      drawSystem();
-    }
-    function setCustomActive() {
-      presetBtns.forEach(el => el.classList.remove('active'));
-      customBtn.classList.add('active');
-    }
-
-    const presetMap = {
-      identity: [1.0, 0.0],
-      steep: [5.0, 0.0],
-      negative: [-2.0, 4.0],
-      horizontal: [0.0, 3.0]
-    };
-    presetBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (btn.dataset.preset === 'custom') { setCustomActive(); return; }
-        const [m, b] = presetMap[btn.dataset.preset] || [0, 0];
-        applyPreset(btn, m, b);
-      });
-    });
-    slopeInput.addEventListener('input', () => { setCustomActive(); drawSystem(); });
-    interceptInput.addEventListener('input', () => { setCustomActive(); drawSystem(); });
     initGraph();
-    drawSystem();
+    return drawSystem;
   }
 
   function renderStudio(studio) {
-    // If the studio supplies a custom render function (e.g., the legacy linear visualizer),
-    // we bypass the standard slider/control setup and render directly into the workbench.
-    if (typeof studio.render === 'function') {
-      // Hide the default chart and clear any existing controls.
-      chart.hidden = true;
-      controls.replaceChildren();
-      // Find the workbench container (the element that normally holds the chart and controls).
-      const workbench = document.querySelector('.viz-workbench');
-      if (workbench) {
-        // Empty it and let the custom render populate its own UI.
-        workbench.innerHTML = '';
-        studio.render(workbench);
-      }
-      return; // Skip the rest of the standard rendering logic.
+    heading.textContent = studio.title;
+    description.textContent = studio.desc;
+    if (rulePanel) rulePanel.hidden = !(studio.formulaReference || studio.showRulePanel);
+    if (formulaReference) formulaReference.hidden = !studio.formulaReference;
+    const workbench = document.querySelector('.viz-workbench');
+    if (workbench) {
+      workbench.querySelector('.viz-chart-wrap').hidden = false;
+      workbench.querySelector('.viz-controls').hidden = false;
     }
-    // Standard rendering path for built‑in studios.
+    chart.hidden = false;
+    document.querySelector('.viz-chart-caption').hidden = false;
+    document.querySelector('#viz-metrics').hidden = true;
+    readout.hidden = false;
+    document.querySelector('.viz-chart-wrap').classList.remove('viz-legacy-linear-output');
     heading.textContent = studio.title;
     description.textContent = studio.desc;
     ruleLabel.textContent = 'Current rule';
@@ -623,6 +566,18 @@
       }
       controls.append(row);
     }
+    let drawLegacyLinear;
+    if (studio.legacyLinearOutput) {
+      const chartWrap = document.querySelector('.viz-chart-wrap');
+      chartWrap.classList.add('viz-legacy-linear-output');
+      chart.hidden = true;
+      document.querySelector('.viz-chart-caption').hidden = true;
+      readout.hidden = true;
+      const mount = document.createElement('div');
+      mount.className = 'viz-legacy-linear-mount';
+      chartWrap.append(mount);
+      drawLegacyLinear = legacyLinearInit(mount);
+    }
     function update() {
       try {
         const v = valuesFrom({ fields: studio.params });
@@ -630,6 +585,10 @@
         output.textContent = studio.outputText(v, y);
         readout.textContent = studio.readText(v, y);
         equation.textContent = studio.ruleText(v);
+        if (studio.legacyLinearOutput) {
+          drawLegacyLinear(v.slope, v.intercept);
+          return;
+        }
         const [lo, hi, step] = studio.sample;
         const pts = [];
         for (let x = lo; x < hi - step * 1e-8; x += step) pts.push([x, studio.fn({ ...v, x })]);
@@ -742,10 +701,17 @@
   });
   function renderSelected() {
     const key=topic.value;activeSpec=specs[key];const generic=topics[key];const studio=studios[key];
+    const workbench = document.querySelector('.viz-workbench');
+    if (workbench) {
+      workbench.querySelector('.viz-controls').hidden = false;
+      workbench.querySelector('.viz-chart-wrap').hidden = false;
+      workbench.querySelector('.viz-chart-wrap').classList.remove('viz-legacy-linear-output');
+      workbench.querySelector('.viz-legacy-linear-mount')?.remove();
+    }
     if (geometryVisualizer) { geometryVisualizer.dispose(); geometryVisualizer = null; }
     if (rulePanel) rulePanel.hidden = !studio?.formulaReference;
     if (!studio && formulaReference) formulaReference.hidden = true;
-    controls.replaceChildren();chart.hidden=false;document.querySelector('#viz-alt-visual').hidden=true;document.querySelector('.viz-chart-caption').hidden=false;document.querySelector('.viz-chart-wrap').classList.remove('viz-alt-view-active');
+    controls.replaceChildren();chart.hidden=false;readout.hidden=false;document.querySelector('#viz-alt-visual').hidden=true;document.querySelector('.viz-chart-caption').hidden=false;document.querySelector('.viz-chart-wrap').classList.remove('viz-alt-view-active');
     if(studio){renderStudio(studio);return;}
     if(activeSpec){const [title,desc,rule,fields,fn,ruleFn]=activeSpec;heading.textContent=title;description.textContent=desc;ruleLabel.textContent='Current rule';equation.textContent=rule;buildControls({fields});setMetrics([]);
       const update=()=>{try{const v=valuesFrom({fields});const y=fn(v);output.textContent=Number.isFinite(y)?fmt.format(y):'undefined for x < 0';readout.textContent=`At x = ${fmt.format(v.x)}, y = ${Number.isFinite(y)?fmt.format(y):'undefined'}.`;equation.textContent=ruleFn(v);const pts=Array.from({length:101},(_,i)=>{const x=-5+i*.1;return [x,fn({...v,x})];});showGraph(pts,null,Number.isFinite(y)?[v.x,y]:null);}catch(error){equation.textContent='Check the entered values';output.textContent='—';readout.textContent=error.message;line.setAttribute('d','');area.setAttribute('d','');markers.replaceChildren();point.style.display='none';}}
