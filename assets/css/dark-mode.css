@@ -97,7 +97,14 @@
 :root[data-theme="dark"] .site-header .nav-link.active { color: #fff; }
 :root[data-theme="dark"] .site-header .header-ai,
 :root[data-theme="dark"] .site-header .menu-toggle { background: var(--hd-blush); }
-:root[data-theme="dark"] .site-header .menu-toggle { color: var(--hd-ink); }
+:root[data-theme="dark"] .site-header .menu-toggle {
+  color: #282435;
+  background: #eee9f3;
+  border-color: #d8cee5;
+}
+:root[data-theme="dark"] .site-header .menu-toggle span { background-color: #282435; }
+:root[data-theme="dark"] .site-header .menu-toggle:hover,
+:root[data-theme="dark"] .site-header .menu-toggle:focus-visible { background: #d8c9ec; }
 
 @media (max-width: 1200px) {
   :root[data-theme="dark"] .site-header .main-nav .nav-links {
@@ -235,6 +242,42 @@
   color: var(--op-ink);
   background-color: var(--op-card);
   border-color: var(--op-line);
+}
+:root[data-theme="dark"] .challenges-page .quiz-setup {
+  color: var(--op-ink);
+  background: var(--op-card);
+  border-color: var(--op-line);
+}
+:root[data-theme="dark"] .challenges-page .quiz-mode {
+  color: var(--op-ink);
+  background: #302b38;
+  border-color: #8d809b;
+}
+:root[data-theme="dark"] .challenges-page .quiz-mode span { color: #d2c9dc; }
+:root[data-theme="dark"] .challenges-page .quiz-mode.is-active {
+  color: #fff;
+  background: #604b78;
+  border-color: #d0b9f5;
+}
+:root[data-theme="dark"] .challenges-page .quiz-mode.is-active span { color: #f1eafa; }
+:root[data-theme="dark"] .challenges-page .quiz-fields select,
+:root[data-theme="dark"] .challenges-page .challenge-library-tools select {
+  color: var(--op-ink);
+  background: #201d27;
+  border-color: #8d809b;
+  color-scheme: dark;
+}
+:root[data-theme="dark"] .challenges-page .quiz-setup .op-button:disabled {
+  color: #f5f0f8;
+  background: #493b55;
+  border-color: #9a8aa9;
+  box-shadow: 3px 3px 0 #141219;
+  opacity: 1;
+}
+:root[data-theme="dark"] .challenges-page .quiz-setup .op-button:disabled span {
+  color: #f5f0f8;
+  background: #302b38;
+  border-color: #9a8aa9;
 }
 :root[data-theme="dark"] .challenges-page :is(.challenge-feature > p, .challenge-feature-meta, .challenge-prompt p, .challenge-explanation, .challenge-card p, .challenge-card li) { color: var(--op-muted); }
 :root[data-theme="dark"] .challenges-page :is(input, select, textarea)::placeholder { color: #c9c1d1; opacity: 1; }

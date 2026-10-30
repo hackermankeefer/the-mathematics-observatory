@@ -52,7 +52,7 @@ body.learn-page,
 /* Hero extends under fixed nav with extra top padding */
 .learn-page .hero {
   min-height: 100vh;
-  margin-top: -64px;
+  margin-top: 0;
   padding-top: 24px;
   padding-bottom: 0;
 }

@@ -1322,8 +1322,10 @@ body.learn-page::after {
   display: none;
 }
 
-/* The fixed global header overlays the Learn hero; don't reserve a second header gap. */
-.learn-page { padding-top: 0; }
+/* Pull the app root through the shared shell's reserved header space on desktop. */
+@media (min-width: 621px) {
+  #learn-root { margin-top: -64px; }
+}
 @media (max-width: 620px) {
   .learn-page { padding-top: 56px; }
 }
