@@ -30,6 +30,7 @@
     const curriculumScopePrompt = [
         'You are a specialized Grade 11 General Mathematics educational AI following the Philippine K-12 curriculum.',
         'Your curriculum covers three terms: Term 1 (Business Mathematics; measurement and unit conversion; surface area and volume; scale; currency, time, and temperature conversion; patterns; Fibonacci, arithmetic and geometric sequences and series; financial applications; functions and graphs); Term 2 (piecewise functions; statistics including central tendency, variability, sampling, normal distributions and z-scores, and hypothesis testing; right-triangle trigonometry, Heron\'s formula, triangle area using sine, bearings, and elevation/depression); Term 3 (compound interest, annuities, loans, amortization, scatter plots, line of best fit, Pearson correlation, and logic including propositions, truth tables, tautologies, and contradictions).',
+        'Conversation context: Treat the recent user and assistant messages as one conversation. Resolve short follow-ups such as “what about sphere?” using the previous topic and do not reject them only because the latest message is short. Use the conversation context supplied with the current request; when chat history is cleared, treat the next question as a new conversation.',
         'Treat the knowledge base as the curriculum boundary. Basic arithmetic, algebraic manipulation, fractions, equations, exponents, and prerequisite mathematics may be used when necessary. Do not present advanced mathematics outside this scope such as calculus, differential equations, linear algebra, abstract algebra, or advanced analysis unless a small prerequisite concept is genuinely necessary to explain a Grade 11 topic.',
         'When explaining piecewise functions, include a brief example rule using a KaTeX cases expression when it is relevant.',
         'If a student asks about something outside the curriculum, clearly state that it is outside the current Grade 11 General Mathematics coverage and redirect toward relevant Grade 11 topics.',
@@ -50,6 +51,7 @@
         }
     ];
     let chatGeneration = 0;
+    let activeRequestController = null;
     const chatStorageKey = 'mathematics-observatory-assistant-v1';
 
     function readSavedChat() {
@@ -60,7 +62,7 @@
                     ? saved.messages.filter(message => ['user', 'bot'].includes(message.type) && typeof message.text === 'string').slice(-40)
                     : [],
                 conversation: Array.isArray(saved.conversation)
-                    ? saved.conversation.filter(message => ['user', 'assistant'].includes(message.role) && typeof message.content === 'string').slice(-20)
+                    ? saved.conversation.filter(message => ['user', 'assistant'].includes(message.role) && typeof message.content === 'string').slice(-32)
                     : []
             };
         } catch {
@@ -88,7 +90,7 @@
     panel.innerHTML = `
         <header class="assistant-header">
             <div class="assistant-title">
-                <div class="assistant-avatar" aria-hidden="true">&int;</div>
+                <img class="assistant-avatar" src="/favicon.svg" alt="" width="36" height="36">
                 <div>
                     <div class="assistant-heading">Math Assistant</div>
                     <div class="assistant-status">Ready to help</div>
@@ -300,7 +302,7 @@
                 .slice(-40);
             const savedConversation = conversation.slice(1)
                 .filter(message => ['user', 'assistant'].includes(message.role) && typeof message.content === 'string')
-                .slice(-20);
+                .slice(-32);
             window.localStorage?.setItem(chatStorageKey, JSON.stringify({
                 messages: savedMessages,
                 conversation: savedConversation
@@ -308,6 +310,11 @@
         } catch {
             return;
         }
+    }
+
+    function addConversationMessage(message) {
+        conversation.push(message);
+        if (conversation.length > 33) conversation.splice(1, conversation.length - 33);
     }
 
     const restoredMessages = Promise.all(savedChat.messages.map(async savedMessage => {
@@ -981,7 +988,7 @@
         return [curriculumNotes, trainingExamples].filter(Boolean).join('\n\n');
     }
 
-    function isGrade11Question(question) {
+    function isDirectGrade11Question(question) {
         const normalizedQuestion = question.toLowerCase();
         const outsideScope = /\b(calculus|derivative|differential equations?|integrals?|linear algebra|abstract algebra|matrix|determinant|vector space|complex analysis|partial derivative|probability density function|machine learning|deep learning|coding|programming|python|javascript|chemistry|biology|physics|weather|politics|history|geography|sports|recipe|poem|song|story|email|essay)\b/;
         const nonMathRequest = /\b(joke|poem|song|story|email|essay|code|script)\b/;
@@ -1000,7 +1007,7 @@
             subtopic.name,
             ...subtopic.keywords
         ])).map(keyword => keyword.toLowerCase());
-        const topicKeywords = [...curriculumKeywords, 'math', 'mathematics', 'business and finance', 'patterns', 'sequences', 'series', 'piecewise', 'trigonometry', 'normal distribution', 'sampling', 'compound interest', 'annuity', 'loan', 'mortgage', 'logic', 'proposition', 'syllogism', 'fallacy', 'function', 'domain', 'range', 'equation', 'solve', 'simplify', 'factor', 'evaluate', 'graph', 'slope', 'pythagorean', 'pythagoras', 'right triangle', 'geometry', 'area', 'perimeter', 'circumference', 'volume', 'arithmetic mean', 'average', 'profit', 'loss', 'markup', 'discount', 'vat', 'wage', 'salary', 'interest', 'depreciation', 'inflation', 'dividend', 'stock', 'bond', 'future value', 'present value', 'amortization', 'annuity', 'term', 'common difference', 'common ratio', 'arithmetic', 'geometric', 'exponential', 'logarithmic', 'rational', 'piecewise', 'inverse', 'composite', 'sine', 'cosine', 'tangent', 'csc', 'sec', 'cot', 'standard form', 'general form', 'normal curve', 'percentile', 'quartile', 'decile', 'z-score', 'correlation', 'regression', 'proposition', 'conjunction', 'disjunction', 'conditional', 'biconditional', 'negation', 'tautology', 'contradiction', 'valid', 'invalid', 'premise', 'conclusion', 'modus ponens', 'modus tollens', 'hypothesis', 'p-value', 'significance level'];
+        const topicKeywords = [...curriculumKeywords, 'math', 'mathematics', 'business and finance', 'patterns', 'sequences', 'series', 'piecewise', 'trigonometry', 'normal distribution', 'sampling', 'compound interest', 'annuity', 'loan', 'mortgage', 'logic', 'proposition', 'syllogism', 'fallacy', 'function', 'domain', 'range', 'equation', 'solve', 'simplify', 'factor', 'evaluate', 'graph', 'slope', 'pythagorean', 'pythagoras', 'right triangle', 'geometry', 'area', 'perimeter', 'circumference', 'volume', 'sphere', 'spheres', 'cube', 'cubes', 'cone', 'cones', 'cylinder', 'cylinders', 'rectangular prism', 'surface area', 'arithmetic mean', 'average', 'profit', 'loss', 'markup', 'discount', 'vat', 'wage', 'salary', 'interest', 'depreciation', 'inflation', 'dividend', 'stock', 'bond', 'future value', 'present value', 'amortization', 'annuity', 'term', 'common difference', 'common ratio', 'arithmetic', 'geometric', 'exponential', 'logarithmic', 'rational', 'piecewise', 'inverse', 'composite', 'sine', 'cosine', 'tangent', 'csc', 'sec', 'cot', 'standard form', 'general form', 'normal curve', 'percentile', 'quartile', 'decile', 'z-score', 'correlation', 'regression', 'proposition', 'conjunction', 'disjunction', 'conditional', 'biconditional', 'negation', 'tautology', 'contradiction', 'valid', 'invalid', 'premise', 'conclusion', 'modus ponens', 'modus tollens', 'hypothesis', 'p-value', 'significance level'];
 
         const asksForUnitConversion = /\b(?:convert|conversion)\b/.test(normalizedQuestion)
             && /\b(?:mm|cm|m|km|millimet(?:er|re)s?|centimet(?:er|re)s?|met(?:er|re)s?|kilomet(?:er|re)s?|inches?|feet|celsius|fahrenheit|minutes?|hours?|currency|exchange rate)\b/.test(normalizedQuestion);
@@ -1012,7 +1019,18 @@
         return /\d\s*(?:[+\-*/=<>×÷]|plus\b|minus\b|times\b|divided by\b)\s*(?:\d|[a-z])/i.test(question);
     }
 
-    async function getReply(question, replyElement) {
+    function isGrade11Question(question) {
+        if (isDirectGrade11Question(question)) return true;
+        const normalizedQuestion = question.trim().toLowerCase();
+        const isContextualFollowUp = normalizedQuestion.length <= 100
+            && /^(?:and\b|what about\b|how about\b|what if\b|then\b|why\b|how so\b|can you explain (?:that|it)\b|tell me more\b)/.test(normalizedQuestion);
+        if (!isContextualFollowUp) return false;
+        return conversation.slice(1).slice(-12).some(message =>
+            message.role === 'user' && isDirectGrade11Question(message.content)
+        );
+    }
+
+    async function getReply(question, replyElement, requestGeneration, signal) {
         if (!isGrade11Question(question)) {
             const refusal = 'I can only help with Grade 11 mathematics. Ask me about algebra, functions, trigonometry, geometry, statistics, or probability.';
             await renderMessage(replyElement, refusal);
@@ -1022,8 +1040,9 @@
         const questionStatus = window.Grade11MathCalculator?.classifyQuestion?.(question);
         if (questionStatus && ['NEEDS_CLARIFICATION', 'INSUFFICIENT_INFORMATION'].includes(questionStatus.status)) {
             await renderMessage(replyElement, questionStatus.message);
-            conversation.push({ role: 'user', content: question });
-            conversation.push({ role: 'assistant', content: questionStatus.message });
+            if (requestGeneration !== chatGeneration || signal.aborted) return '';
+            addConversationMessage({ role: 'user', content: question });
+            addConversationMessage({ role: 'assistant', content: questionStatus.message });
             return questionStatus.message;
         }
 
@@ -1066,15 +1085,15 @@
         const allowsQuickAnswer = requestMode === 'standard' || requestMode === 'answer';
         const quickAnswer = allowsQuickAnswer && !calculatorTask && (answerKnownFormula(question) || calculateBasicArithmetic(question));
         if (quickAnswer) {
-            conversation.push({ role: 'user', content: question });
-            conversation.push({ role: 'assistant', content: quickAnswer });
+            addConversationMessage({ role: 'user', content: question });
+            addConversationMessage({ role: 'assistant', content: quickAnswer });
             await renderMessage(replyElement, quickAnswer);
             return quickAnswer;
         }
 
-        conversation.push({ role: 'user', content: question });
+        addConversationMessage({ role: 'user', content: question });
         const curriculumContext = getCurriculumContext(question, calculatorTask);
-        const recentConversation = conversation.slice(1).slice(/\b(all|overview|curriculum|syllabus|topics)\b/i.test(question) ? -2 : -6);
+        const recentConversation = conversation.slice(1).slice(-12);
         if (recentConversation[0]?.role === 'assistant') recentConversation.shift();
         const requestMessages = [
             {
@@ -1092,7 +1111,7 @@
                 think: false,
                 format: mathResponseFormat,
                 options: {
-                    num_ctx: 2048,
+                    num_ctx: 8192,
                     num_predict: 768,
                     temperature: 0.2
                 },
@@ -1101,13 +1120,15 @@
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(requestPayload)
+            body: JSON.stringify(requestPayload),
+            signal
         });
         if (!response.ok) {
             const failure = await response.json().catch(() => ({}));
             throw new Error(`API: ${failure.error || `The request failed (HTTP ${response.status}).`}`);
         }
         const result = await response.json();
+        if (requestGeneration !== chatGeneration || signal.aborted) return '';
         const modelReply = formatMathResponse(result.message?.content || '', requestMode) || 'I could not produce a complete solution. Please try a shorter question or split the problem into smaller parts.';
         const baseReply = calculatorTask && requestMode !== 'hint'
             ? enforceCalculatorAnswer(modelReply, calculatorTask)
@@ -1115,23 +1136,34 @@
 
         const reply = ensurePiecewiseExample(question, baseReply, requestMode);
         await renderMessage(replyElement, reply);
-        conversation.push({ role: 'assistant', content: reply });
+        if (requestGeneration !== chatGeneration || signal.aborted) return '';
+        addConversationMessage({ role: 'assistant', content: reply });
         return reply;
     }
 
-    function clearHistory() {
+    function resetChatState() {
+        chatGeneration += 1;
+        activeRequestController?.abort();
+        activeRequestController = null;
         const firstMessage = messages.firstElementChild;
         messages.replaceChildren(firstMessage);
         conversation.length = 1;
-        chatGeneration += 1;
         setBusy(false);
         syncSuggestions();
+    }
+
+    function clearHistory() {
+        resetChatState();
         try {
             window.localStorage?.removeItem(chatStorageKey);
         } catch {
             // Ignore unavailable storage; the in-memory history is already cleared.
         }
     }
+
+    window.addEventListener('storage', event => {
+        if (event.key === chatStorageKey && event.newValue === null) resetChatState();
+    });
 
     launcher.addEventListener('click', () => setOpen(!panel.classList.contains('is-open')));
     closeButton.addEventListener('click', () => setOpen(false));
@@ -1180,6 +1212,8 @@
 
     async function ask(question, reply) {
         const requestGeneration = chatGeneration;
+        const requestController = new AbortController();
+        activeRequestController = requestController;
         reply.className = 'assistant-message bot is-loading';
         reply.textContent = 'Thinking';
         setBusy(true);
@@ -1188,9 +1222,12 @@
                 window.GRADE_11_MATH_KNOWLEDGE_READY,
                 window.GRADE_11_MATH_EXAMPLES_READY
             ]);
-            await getReply(question, reply);
+            if (requestGeneration !== chatGeneration) return;
+            await getReply(question, reply, requestGeneration, requestController.signal);
+            if (requestGeneration !== chatGeneration) return;
             reply.className = 'assistant-message bot';
         } catch (error) {
+            if (requestGeneration !== chatGeneration || error.name === 'AbortError') return;
             if (conversation.at(-1)?.role === 'user') conversation.pop();
             reply.className = 'assistant-message bot is-error';
             reply.textContent = friendlyError(error);
@@ -1203,11 +1240,13 @@
             });
             reply.appendChild(retry);
         } finally {
-            if (requestGeneration === chatGeneration) saveChatState();
-            else conversation.length = 1;
-            setBusy(false);
-            scrollToLatest();
-            input.focus();
+            if (requestGeneration === chatGeneration) {
+                if (activeRequestController === requestController) activeRequestController = null;
+                saveChatState();
+                setBusy(false);
+                scrollToLatest();
+                input.focus();
+            }
         }
     }
 

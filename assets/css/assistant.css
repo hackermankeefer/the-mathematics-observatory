@@ -70,14 +70,8 @@
     flex: 0 0 auto;
     width: 2.25rem;
     height: 2.25rem;
-    display: grid;
-    place-items: center;
-    border: 2px solid var(--a-ink);
-    border-radius: 10px;
-    background: var(--a-chip);
-    box-shadow: 2px 2px 0 0 var(--a-ink);
-    font-family: Georgia, serif;
-    font-size: 1.25rem;
+    display: block;
+    object-fit: contain;
 }
 .assistant-heading { font-size: 0.98rem; font-weight: 800; }
 .assistant-status { color: var(--a-muted); font-size: 0.72rem; }

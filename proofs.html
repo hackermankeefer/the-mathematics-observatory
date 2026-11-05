@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why It Works | The Mathematics Observatory</title>
     <meta name="description" content="Discover the reasoning behind mathematical concepts. Understand why formulas work, not just how to use them.">
-    <link rel="stylesheet" href="assets/css/styles.css?v=18">
-    <link rel="stylesheet" href="assets/css/assistant.css?v=8">
-    <link rel="stylesheet" href="assets/css/proofs.css?v=7">
+    <link rel="stylesheet" href="assets/css/styles.css?v=19">
+    <link rel="stylesheet" href="assets/css/assistant.css?v=9">
+    <link rel="stylesheet" href="assets/css/proofs.css?v=9">
     <link rel="stylesheet" href="/vendor/katex/katex.min.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/fonts/archivo-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -29,7 +29,7 @@
     <header class="site-header">
 <nav class="main-nav" aria-label="Main navigation">
   <div class="nav-container">
-    <a class="logo" href="index.html" aria-label="The Mathematics Observatory home"><svg class="logo-mark" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" focusable="false"><defs><linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset="1" stop-color="#FFB89A"/></linearGradient></defs><rect x="1.5" y="1.5" width="29" height="29" rx="9" fill="url(#logo-grad)" stroke="#282435" stroke-width="2"/><path d="M19.5 7.5c-2.6-.9-4 .6-4 3.4v10.2c0 2.8-1.4 4.3-4 3.4" fill="none" stroke="#282435" stroke-width="2.4" stroke-linecap="round"/><circle cx="20.8" cy="8.2" r="1.5" fill="#282435"/><circle cx="10.8" cy="23.8" r="1.5" fill="#282435"/></svg><span class="logo-text"><span class="logo-the">The </span>Mathematics Observatory</span></a>
+    <a class="logo" href="index.html" aria-label="The Mathematics Observatory home"><img class="logo-mark" src="/favicon.svg" alt="" aria-hidden="true" width="32" height="32"><span class="logo-text"><span class="logo-the">The </span>Mathematics Observatory</span></a>
     <ul class="nav-links" id="site-navigation">
       <li><a href="index.html" class="nav-link">Home</a></li>
       <li><a href="learn.html" class="nav-link">Learn</a></li>
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="step">
                                     <span class="step-number">2</span>
-                                    <p>Make the leading coefficient 1 by dividing: <code>x² + (b/a)x + c/a = 0</code></p>
+                                    <p>Make the leading coefficient 1 by dividing: <code>x² + \frac{b}{a}x + \frac{c}{a} = 0</code></p>
                                 </div>
                                 <div class="step">
                                     <span class="step-number">3</span>
@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="step">
                                     <span class="step-number">4</span>
-                                    <p>The result is always <code>(x + b/2a)² = (b² - 4ac)/4a²</code></p>
+                                    <p>The result is always <code>(x + \frac{b}{2a})² = \frac{b² - 4ac}{4a²}</code></p>
                                 </div>
                             </div>
                             <p class="insight"><strong>Insight:</strong> Completing the square exposes the symmetry of a parabola and turns solving a quadratic into taking square roots.</p>
@@ -189,7 +189,7 @@
                                 </div>
                                 <div class="step">
                                     <span class="step-number">4</span>
-                                    <p><code>a^(-n) = 1/a^n</code> for a ≠ 0, to keep the addition rule consistent</p>
+                                    <p><code>a^(-n) = \frac{1}{a^n}</code> for a ≠ 0, to keep the addition rule consistent</p>
                                 </div>
                             </div>
                             <p class="insight"><strong>Insight:</strong> Each rule is designed to make exponent patterns consistent. Mathematics chooses definitions that preserve patterns!</p>
@@ -274,13 +274,13 @@
                                     <h4>The Derivation Path:</h4>
                                     <ol class="derivation-list">
                                         <li>Start with: <code>ax² + bx + c = 0</code></li>
-                                        <li>Divide by a: <code>x² + (b/a)x + c/a = 0</code></li>
-                                        <li>Move constant to right: <code>x² + (b/a)x = -c/a</code></li>
-                                        <li>Complete the square: add <code>(b/2a)²</code> to both sides</li>
-                                        <li>Factor left side: <code>(x + b/2a)² = b²/4a² - c/a</code></li>
-                                        <li>Simplify right side: <code>(x + b/2a)² = (b² - 4ac)/4a²</code></li>
-                                        <li>Take square root: <code>x + b/2a = ±√(b² - 4ac)/2a</code></li>
-                                        <li>Solve for x: <code>x = (-b ± √(b² - 4ac))/2a</code></li>
+                                        <li>Divide by a: <code>x² + \frac{b}{a}x + \frac{c}{a} = 0</code></li>
+                                        <li>Move constant to right: <code>x² + \frac{b}{a}x = -\frac{c}{a}</code></li>
+                                        <li>Complete the square: add <code>(\frac{b}{2a})²</code> to both sides</li>
+                                        <li>Factor left side: <code>(x + \frac{b}{2a})² = \frac{b²}{4a²} - \frac{c}{a}</code></li>
+                                        <li>Simplify right side: <code>(x + \frac{b}{2a})² = \frac{b² - 4ac}{4a²}</code></li>
+                                        <li>Take square root: <code>x + \frac{b}{2a} = \frac{±√(b² - 4ac)}{2a}</code></li>
+                                        <li>Solve for x: <code>x = \frac{-b ± √(b² - 4ac)}{2a}</code></li>
                                     </ol>
 
                                     <div class="formula-insight">
@@ -332,7 +332,7 @@
                                         <li>Take two points on a line: <code>(x₁, y₁)</code> and <code>(x₂, y₂)</code></li>
                                         <li>Vertical change (rise): <code>y₂ - y₁</code></li>
                                         <li>Horizontal change (run): <code>x₂ - x₁</code></li>
-                                        <li>Steepness is the ratio: <code>m = rise/run</code></li>
+                                        <li>Steepness is the ratio: <code>m = \frac{rise}{run}</code></li>
                                         <li>This ratio is constant for any two points on the same line</li>
                                     </ol>
 
@@ -460,8 +460,8 @@
                                         </button>
                                     </div>
                                     <div class="step-content">
-                                        <p><strong>Use the known formula for 1 + 2 + ... + n = n(n+1)/2:</strong></p>
-                                        <p class="step-math">n³ = 3·Σn² - 3·[n(n+1)/2] + n</p>
+                                        <p><strong>Use the known formula for 1 + 2 + ... + n = <code>\frac{n(n+1)}{2}</code>:</strong></p>
+                                        <p class="step-math">n³ = 3·Σn² - 3·[\frac{n(n+1)}{2}] + n</p>
                                     </div>
                                 </div>
 
@@ -476,8 +476,8 @@
                                     </div>
                                     <div class="step-content">
                                         <p><strong>Solve for Σn²:</strong></p>
-                                        <p class="step-math">3·Σn² = n³ + 3n(n+1)/2 - n</p>
-                                        <p class="step-math">Σn² = [n³ + 3n(n+1)/2 - n] / 3</p>
+                                        <p class="step-math">3·Σn² = n³ + 3\frac{n(n+1)}{2} - n</p>
+                                        <p class="step-math">Σn² = \frac{n³ + \frac{3n(n+1)}{2} - n}{3}</p>
                                     </div>
                                 </div>
 
@@ -492,8 +492,8 @@
                                     </div>
                                     <div class="step-content">
                                         <p><strong>Simplify to get the beautiful formula:</strong></p>
-                                        <p class="step-math-final">1² + 2² + 3² + ... + n² = n(n+1)(2n+1)/6</p>
-                                        <p class="step-insight">This formula works for any positive integer n. Try it: 1² + 2² + 3² = 1 + 4 + 9 = 14, and 3(4)(7)/6 = 84/6 = 14 ✓</p>
+                                        <p class="step-math-final">1² + 2² + 3² + ... + n² = \frac{n(n+1)(2n+1)}{6}</p>
+                                        <p class="step-insight">This formula works for any positive integer n. Try it: 1² + 2² + 3² = 1 + 4 + 9 = 14, and <code>\frac{3(4)(7)}{6} = \frac{84}{6}</code> = 14 ✓</p>
                                     </div>
                                 </div>
                             </div>
@@ -600,7 +600,7 @@
                                     </div>
                                     <div class="step-content">
                                         <p><strong>Divide by 2:</strong></p>
-                                        <p class="step-math-final">S = n/2 · [2a + (n-1)d] = n/2 · (first + last)</p>
+                                        <p class="step-math-final">S = \frac{n}{2} · [2a + (n-1)d] = \frac{n}{2} · (first + last)</p>
                                         <p class="step-insight">The sum is the number of terms multiplied by the average of the first and last terms.</p>
                                     </div>
                                 </div>
@@ -690,7 +690,7 @@
                                     </div>
                                     <div class="step-content">
                                         <p><strong>For r ≠ 1, divide by (1 − r):</strong></p>
-                                        <p class="step-math-final">S = a(1 - r^n)/(1 - r)</p>
+                                        <p class="step-math-final">S = \frac{a(1 - r^n)}{1 - r}</p>
                                         <p class="step-insight">If r = 1, the finite sum is na. If |r| &lt; 1, then r^n → 0 as n → ∞, so the infinite series converges to a/(1 − r).</p>
                                     </div>
                                 </div>
@@ -755,7 +755,7 @@
                                     <div class="step-content">
                                         <p><strong>Count the ways to get a^(n-k)·b^k:</strong></p>
                                         <p class="step-explanation">To get a^(n-k)·b^k, choose the k factors that contribute b; the remaining n-k factors contribute a. There are C(n,k) such choices.</p>
-                                        <p class="step-math">Number of ways = C(n,k) = n!/(k!(n-k)!)</p>
+                                        <p class="step-math">Number of ways = C(n,k) = \frac{n!}{k!(n-k)!}</p>
                                     </div>
                                 </div>
 
@@ -848,7 +848,7 @@
                         </div>
                         <div class="proof-explanation">
                             <p><strong>What you see:</strong> Dots arranged in ascending rows, then duplicated and flipped.</p>
-                            <p><strong>Why it proves 1 + 2 + ... + n = n(n+1)/2:</strong> When you flip and stack, you get a rectangle with n rows and (n+1) columns. The original sum is half of that rectangle's area.</p>
+                            <p><strong>Why it proves 1 + 2 + ... + n = <code>\frac{n(n+1)}{2}</code>:</strong> When you flip and stack, you get a rectangle with n rows and (n+1) columns. The original sum is half of that rectangle's area.</p>
                             <button class="animate-btn" data-canvas="gauss-canvas">Animate Proof</button>
                         </div>
                     </article>
@@ -1059,7 +1059,7 @@
     <script src="assets/js/curriculum-data.js?v=7"></script>
     <script src="assets/js/math-calculator.js?v=7"></script>
     <script src="assets/js/assistant-config.js"></script>
-    <script src="assets/js/assistant.js?v=48"></script>
+    <script src="assets/js/assistant.js?v=50"></script>
     <script src="/vendor/katex/katex.min.js"></script>
     <script src="assets/js/proofs.js?v=2"></script>
 <script defer src="assets/js/progress.js"></script><script defer src="assets/js/topic-chip.js"></script>

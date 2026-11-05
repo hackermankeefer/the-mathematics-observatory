@@ -1,7 +1,7 @@
 const DEFAULT_MODEL = 'gemini-3.5-flash-lite'; // stable Flash-Lite per ai.google.dev/gemini-api/docs/models
 const UPSTREAM_TIMEOUT_MS = 45_000;
 const MAX_BODY_BYTES = 48_000;
-const MAX_MESSAGES = 8;
+const MAX_MESSAGES = 16;
 const MAX_MESSAGE_CHARACTERS = 16_000;
 const MAX_REQUESTS_PER_MINUTE = 30;
 const MAX_RATE_BUCKETS = 5_000;
@@ -27,7 +27,7 @@ function parseBody(body) {
 
 function validateRequest(body) {
     if (!body || !Array.isArray(body.messages) || body.messages.length < 2 || body.messages.length > MAX_MESSAGES) {
-        return 'A request must contain 2 to 8 conversation messages.';
+        return 'A request must contain 2 to 16 conversation messages.';
     }
 
     let characterCount = 0;

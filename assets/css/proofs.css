@@ -159,7 +159,7 @@
 
 /* ---------- Section scaffolding ---------- */
 
-.proofs-page section:not(.proofs-hero) { padding-block: 72px; }
+.proofs-page section:not(.proofs-hero):not(.assistant-panel) { padding-block: 72px; }
 
 .proofs-page .section-header {
   max-width: 720px;
@@ -241,7 +241,23 @@
   background: var(--op-mint);
 }
 
-.card-icon svg { width: 100%; height: 100%; }
+.proofs-page .intuition-card .card-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 52px;
+  color: var(--op-ink);
+  background: var(--op-mint);
+}
+
+.proofs-page .intuition-card .card-icon > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  color: var(--op-ink);
+  fill: none;
+  stroke: currentColor;
+}
 
 .intuition-card h3 {
   margin: 0 0 8px;

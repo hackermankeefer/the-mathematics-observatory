@@ -2671,6 +2671,7 @@ h4 {
   column-gap: 48px;
   max-width: 1160px;
   margin: 0 auto 54px;
+  color: inherit;
 }
 
 .people-section .section-heading .script-label { grid-row: span 2; }

@@ -1,7 +1,7 @@
 {
   "topicName": "Measurement and Conversion",
   "topicOverview": "Measurement applies formulas and unit conversions to lengths, area, surface area, volume, scale, time, temperature, and currency. Keep units consistent and report the final unit appropriate to the quantity.",
-  "keywords": ["measurement", "unit conversion", "metric conversion", "convert units", "centimetres", "centimeters", "metres", "meters", "millimetres", "millimeters", "kilometres", "kilometers", "length", "area", "surface area", "volume", "cylinder", "prism", "scale drawing", "scale factor", "currency conversion", "time conversion", "temperature conversion", "Celsius", "Fahrenheit"],
+  "keywords": ["measurement", "unit conversion", "metric conversion", "convert units", "centimetres", "centimeters", "metres", "meters", "millimetres", "millimeters", "kilometres", "kilometers", "length", "area", "surface area", "volume", "cylinder", "prism", "sphere", "spheres", "scale drawing", "scale factor", "currency conversion", "time conversion", "temperature conversion", "Celsius", "Fahrenheit"],
   "prerequisites": ["Arithmetic with decimals and fractions", "Area and perimeter", "Substitution into formulas", "Ratios and proportions"],
   "subtopics": [
     {
@@ -18,9 +18,9 @@
     },
     {
       "name": "Surface area and volume",
-      "keywords": ["surface area", "volume", "cylinder", "rectangular prism", "cuboid", "prism", "capacity", "cubic units", "square units"],
+      "keywords": ["surface area", "volume", "cylinder", "rectangular prism", "cuboid", "prism", "sphere", "spheres", "capacity", "cubic units", "square units"],
       "definitions": [{"term": "Surface area", "meaning": "The total area of the outside faces or curved surfaces of a solid."}, {"term": "Volume", "meaning": "The amount of three-dimensional space occupied by a solid."}],
-      "formulas": [{"name": "Cylinder volume", "latex": "V=\\pi r^2h", "variables": [{"symbol": "r", "meaning": "radius of the circular base"}, {"symbol": "h", "meaning": "perpendicular height"}]}, {"name": "Cylinder surface area", "latex": "S=2\\pi r^2+2\\pi rh", "variables": [{"symbol": "r", "meaning": "radius"}, {"symbol": "h", "meaning": "height"}]}, {"name": "Rectangular prism volume", "latex": "V=lwh", "variables": [{"symbol": "l", "meaning": "length"}, {"symbol": "w", "meaning": "width"}, {"symbol": "h", "meaning": "height"}]}],
+      "formulas": [{"name": "Sphere volume", "latex": "V=\\frac{4}{3}\\pi r^3", "variables": [{"symbol": "r", "meaning": "radius of the sphere"}]}, {"name": "Sphere surface area", "latex": "S=4\\pi r^2", "variables": [{"symbol": "r", "meaning": "radius of the sphere"}]}, {"name": "Cylinder volume", "latex": "V=\\pi r^2h", "variables": [{"symbol": "r", "meaning": "radius of the circular base"}, {"symbol": "h", "meaning": "perpendicular height"}]}, {"name": "Cylinder surface area", "latex": "S=2\\pi r^2+2\\pi rh", "variables": [{"symbol": "r", "meaning": "radius"}, {"symbol": "h", "meaning": "height"}]}, {"name": "Rectangular prism volume", "latex": "V=lwh", "variables": [{"symbol": "l", "meaning": "length"}, {"symbol": "w", "meaning": "width"}, {"symbol": "h", "meaning": "height"}]}],
       "conditions": ["Use the same linear unit for every dimension before substituting.", "Volume is reported in cubic units and surface area in square units.", "Use the value of pi specified in the question; otherwise keep pi exact until rounding the final result."],
       "importantProperties": ["A cylinder's volume is base area times perpendicular height.", "A cylinder's total surface area includes both circular ends and the curved surface.", "Check that an answer's units and magnitude suit the context."],
       "workedExamples": ["For r=5.6 cm and h=13 cm, V=π(5.6)^2(13)=407.68π≈1280.76 cm³.", "For a 3 cm by 4 cm by 5 cm rectangular prism, V=3(4)(5)=60 cm³."],
