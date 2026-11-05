@@ -366,6 +366,12 @@
         const normalizedQuestion = question.toLowerCase();
         const requestedFormulas = [];
 
+        if (/\brectangle\b/.test(normalizedQuestion)
+            && /\barea\b/.test(normalizedQuestion)
+            && !/\d/.test(normalizedQuestion)) {
+            return 'The area of a rectangle is length times width: $A = l \\times w$. Multiply the rectangle’s length by its width; the result is in square units.';
+        }
+
         if (normalizedQuestion.includes('pythagorean') || normalizedQuestion.includes('pythagoras')) {
             requestedFormulas.push('The Pythagorean theorem for a right triangle is $a^2 + b^2 = c^2$, where $c$ is the hypotenuse.');
         }
