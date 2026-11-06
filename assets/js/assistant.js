@@ -188,7 +188,7 @@
         rawMessageText.set(element, text);
         element.className = element.className.replace(/\s*\bis-loading\b/, '');
         await katexReady;
-        const normalizedText = text.replace(/\\\$/g, '$');
+        const normalizedText = wrapBareLatexFormulas(text.replace(/\\\$/g, '$'));
 
         if (window.marked && window.DOMPurify) {
             const mathSegments = [];
@@ -475,7 +475,22 @@
         return result + wrapPlainSegment(text.slice(cursor));
     }
 
+    function wrapBareLatexFormulas(text) {
+        return text.split(/,\s*(?=[A-Z][A-Za-z ]*:\s*)/).map(segment => {
+            if (/\$[^$]+\$|\\\(|\\\[/.test(segment)) return segment;
+
+            const colonIndex = segment.lastIndexOf(':');
+            const prefix = colonIndex >= 0 ? `${segment.slice(0, colonIndex + 1)} ` : '';
+            const formula = (colonIndex >= 0 ? segment.slice(colonIndex + 1) : segment).trim();
+            const hasLatexCommand = /\\(?:frac|sqrt|pi|theta|cdot|times|pm|le|ge|ne)\b/.test(formula);
+            if (!hasLatexCommand || !formula.includes('=')) return segment;
+
+            return `${prefix}$${formula}$`;
+        }).join(', ');
+    }
+
     function wrapPlainEquation(text) {
+        text = wrapBareLatexFormulas(text);
         text = wrapBarePiecewiseCases(text);
         if (/\$[^$]+\$|\\\(|\\\[/.test(text)) return text;
 
