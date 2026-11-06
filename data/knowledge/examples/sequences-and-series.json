@@ -622,6 +622,215 @@
       "commonMistake": "Dividing $300,000 by 20 and ignoring that the account continues to earn interest on the remaining balance.",
       "modelType": "geometric",
       "financialContext": "retirement-withdrawal"
+    },
+    {
+        "id": "sequences-balanced-001",
+        "difficulty": "beginner",
+        "question": "Find the next term: 2, 4, 6, 8, …",
+        "given": "arithmetic sequence; common difference=2",
+        "expectedMethod": "Add the constant difference to the last term.",
+        "formula": "a_(n+1)=a_n+d",
+        "workedSolution": "Each term increases by 2; next=10.",
+        "finalAnswer": "10",
+        "commonMistake": "Multiplying by the common difference."
+    },
+    {
+        "id": "sequences-balanced-002",
+        "difficulty": "beginner",
+        "question": "Find the next term: 5, 8, 11, 14, …",
+        "given": "arithmetic sequence; common difference=3",
+        "expectedMethod": "Add the constant difference to the last term.",
+        "formula": "a_(n+1)=a_n+d",
+        "workedSolution": "Each term increases by 3; next=17.",
+        "finalAnswer": "17",
+        "commonMistake": "Multiplying by the common difference."
+    },
+    {
+        "id": "sequences-balanced-003",
+        "difficulty": "intermediate",
+        "question": "Find term 5 of an arithmetic sequence with first term 3 and common difference 2.",
+        "given": "a₁=3; d=2; n=5",
+        "expectedMethod": "Use the arithmetic nth-term rule.",
+        "formula": "a_n=a_1+(n−1)d",
+        "workedSolution": "a_5=3+(5−1)(2)=11.",
+        "finalAnswer": "11",
+        "commonMistake": "Using nd instead of (n−1)d."
+    },
+    {
+        "id": "sequences-balanced-004",
+        "difficulty": "intermediate",
+        "question": "Find term 6 of an arithmetic sequence with first term 4 and common difference 3.",
+        "given": "a₁=4; d=3; n=6",
+        "expectedMethod": "Use the arithmetic nth-term rule.",
+        "formula": "a_n=a_1+(n−1)d",
+        "workedSolution": "a_6=4+(6−1)(3)=19.",
+        "finalAnswer": "19",
+        "commonMistake": "Using nd instead of (n−1)d."
+    },
+    {
+        "id": "sequences-balanced-005",
+        "difficulty": "application",
+        "question": "A savings plan deposits $20 in month 1, increasing by $10 monthly. Find total deposits after 4 months.",
+        "given": "first=$20; increase=$10; months=4",
+        "expectedMethod": "Treat deposits as an arithmetic sequence and sum them.",
+        "formula": "S_n=n(first+last)/2",
+        "workedSolution": "Last=50; total=4(20+50)/2=140.",
+        "finalAnswer": "$140",
+        "commonMistake": "Adding only first and last deposits."
+    },
+    {
+        "id": "sequences-balanced-006",
+        "difficulty": "application",
+        "question": "A savings plan deposits $25 in month 1, increasing by $15 monthly. Find total deposits after 5 months.",
+        "given": "first=$25; increase=$15; months=5",
+        "expectedMethod": "Treat deposits as an arithmetic sequence and sum them.",
+        "formula": "S_n=n(first+last)/2",
+        "workedSolution": "Last=85; total=5(25+85)/2=275.",
+        "finalAnswer": "$275",
+        "commonMistake": "Adding only first and last deposits."
+    },
+    {
+        "id": "sequences-balanced-007",
+        "difficulty": "application",
+        "question": "A savings plan deposits $30 in month 1, increasing by $20 monthly. Find total deposits after 6 months.",
+        "given": "first=$30; increase=$20; months=6",
+        "expectedMethod": "Treat deposits as an arithmetic sequence and sum them.",
+        "formula": "S_n=n(first+last)/2",
+        "workedSolution": "Last=130; total=6(30+130)/2=480.",
+        "finalAnswer": "$480",
+        "commonMistake": "Adding only first and last deposits."
+    },
+    {
+        "id": "sequences-balanced-008",
+        "difficulty": "advanced",
+        "question": "Find the first 4 terms’ sum for a geometric sequence with first term 2 and ratio 2.",
+        "given": "a₁=2; r=2; n=4",
+        "expectedMethod": "Use the finite geometric series formula.",
+        "formula": "S_n=a_1(r^n−1)/(r−1)",
+        "workedSolution": "S_4=2(2^4−1)/(2−1)=30.",
+        "finalAnswer": "30",
+        "commonMistake": "Using the arithmetic-series rule."
+    },
+    {
+        "id": "sequences-balanced-009",
+        "difficulty": "advanced",
+        "question": "Find the first 5 terms’ sum for a geometric sequence with first term 3 and ratio 3.",
+        "given": "a₁=3; r=3; n=5",
+        "expectedMethod": "Use the finite geometric series formula.",
+        "formula": "S_n=a_1(r^n−1)/(r−1)",
+        "workedSolution": "S_5=3(3^5−1)/(3−1)=363.",
+        "finalAnswer": "363",
+        "commonMistake": "Using the arithmetic-series rule."
+    },
+    {
+        "id": "sequences-balanced-010",
+        "difficulty": "advanced",
+        "question": "Find the first 6 terms’ sum for a geometric sequence with first term 4 and ratio 4.",
+        "given": "a₁=4; r=4; n=6",
+        "expectedMethod": "Use the finite geometric series formula.",
+        "formula": "S_n=a_1(r^n−1)/(r−1)",
+        "workedSolution": "S_6=4(4^6−1)/(4−1)=5460.",
+        "finalAnswer": "5460",
+        "commonMistake": "Using the arithmetic-series rule."
+    },
+    {
+        "id": "sequences-balanced-011",
+        "difficulty": "challenge",
+        "question": "An arithmetic sequence starts at 3 and has common difference 2. Which term equals 19?",
+        "given": "a₁=3; d=2; target=19",
+        "expectedMethod": "Set the nth-term rule equal to the target and solve for n.",
+        "formula": "a_n=a_1+(n−1)d",
+        "workedSolution": "19=3+(9−1)(2); n=9.",
+        "finalAnswer": "Term 9.",
+        "commonMistake": "Using the term value as the term number."
+    },
+    {
+        "id": "sequences-balanced-012",
+        "difficulty": "challenge",
+        "question": "An arithmetic sequence starts at 4 and has common difference 3. Which term equals 31?",
+        "given": "a₁=4; d=3; target=31",
+        "expectedMethod": "Set the nth-term rule equal to the target and solve for n.",
+        "formula": "a_n=a_1+(n−1)d",
+        "workedSolution": "31=4+(10−1)(3); n=10.",
+        "finalAnswer": "Term 10.",
+        "commonMistake": "Using the term value as the term number."
+    },
+    {
+        "id": "sequences-balanced-013",
+        "difficulty": "challenge",
+        "question": "An arithmetic sequence starts at 5 and has common difference 4. Which term equals 45?",
+        "given": "a₁=5; d=4; target=45",
+        "expectedMethod": "Set the nth-term rule equal to the target and solve for n.",
+        "formula": "a_n=a_1+(n−1)d",
+        "workedSolution": "45=5+(11−1)(4); n=11.",
+        "finalAnswer": "Term 11.",
+        "commonMistake": "Using the term value as the term number."
+    },
+    {
+        "id": "sequences-balanced-014",
+        "difficulty": "challenge",
+        "question": "An arithmetic sequence starts at 6 and has common difference 5. Which term equals 61?",
+        "given": "a₁=6; d=5; target=61",
+        "expectedMethod": "Set the nth-term rule equal to the target and solve for n.",
+        "formula": "a_n=a_1+(n−1)d",
+        "workedSolution": "61=6+(12−1)(5); n=12.",
+        "finalAnswer": "Term 12.",
+        "commonMistake": "Using the term value as the term number."
+    },
+    {
+        "id": "sequences-balanced-015",
+        "difficulty": "analysis",
+        "question": "Compare A_n=2+(n−1)(3) and G_n=2(2)^(n−1). Which has the larger term 4?",
+        "given": "arithmetic and geometric rules; n=4",
+        "expectedMethod": "Evaluate both rules at the same index.",
+        "formula": "A_n=a+(n−1)d; G_n=ar^(n−1)",
+        "workedSolution": "A_4=11; G_4=16. The geometric term is larger.",
+        "finalAnswer": "Geometric: 16.",
+        "commonMistake": "Comparing different term numbers."
+    },
+    {
+        "id": "sequences-balanced-016",
+        "difficulty": "analysis",
+        "question": "Compare A_n=3+(n−1)(4) and G_n=3(3)^(n−1). Which has the larger term 5?",
+        "given": "arithmetic and geometric rules; n=5",
+        "expectedMethod": "Evaluate both rules at the same index.",
+        "formula": "A_n=a+(n−1)d; G_n=ar^(n−1)",
+        "workedSolution": "A_5=19; G_5=243. The geometric term is larger.",
+        "finalAnswer": "Geometric: 243.",
+        "commonMistake": "Comparing different term numbers."
+    },
+    {
+        "id": "sequences-balanced-017",
+        "difficulty": "analysis",
+        "question": "Compare A_n=4+(n−1)(5) and G_n=4(4)^(n−1). Which has the larger term 6?",
+        "given": "arithmetic and geometric rules; n=6",
+        "expectedMethod": "Evaluate both rules at the same index.",
+        "formula": "A_n=a+(n−1)d; G_n=ar^(n−1)",
+        "workedSolution": "A_6=29; G_6=4096. The geometric term is larger.",
+        "finalAnswer": "Geometric: 4096.",
+        "commonMistake": "Comparing different term numbers."
+    },
+    {
+        "id": "sequences-balanced-018",
+        "difficulty": "analysis",
+        "question": "Compare A_n=5+(n−1)(6) and G_n=5(2)^(n−1). Which has the larger term 7?",
+        "given": "arithmetic and geometric rules; n=7",
+        "expectedMethod": "Evaluate both rules at the same index.",
+        "formula": "A_n=a+(n−1)d; G_n=ar^(n−1)",
+        "workedSolution": "A_7=41; G_7=320. The geometric term is larger.",
+        "finalAnswer": "Geometric: 320.",
+        "commonMistake": "Comparing different term numbers."
+    },
+    {
+        "id": "sequences-balanced-019",
+        "difficulty": "analysis",
+        "question": "Compare A_n=6+(n−1)(7) and G_n=6(3)^(n−1). Which has the larger term 4?",
+        "given": "arithmetic and geometric rules; n=4",
+        "expectedMethod": "Evaluate both rules at the same index.",
+        "formula": "A_n=a+(n−1)d; G_n=ar^(n−1)",
+        "workedSolution": "A_4=27; G_4=162. The geometric term is larger.",
+        "finalAnswer": "Geometric: 162.",
+        "commonMistake": "Comparing different term numbers."
     }
   ]
 }

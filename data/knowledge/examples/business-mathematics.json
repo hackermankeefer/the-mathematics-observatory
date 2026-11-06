@@ -595,6 +595,226 @@
       "workedSolution": "Tax = $0 + $200 + $200 = $400. Total deductions = $400 + $100 = $500. Net income = $4,000 - $500 = $3,500.",
       "finalAnswer": "$3,500 net income",
       "commonMistake": "Applying each marginal rate to all $4,000 rather than only to the portion in that bracket."
+    },
+    {
+        "id": "business-balanced-001",
+        "difficulty": "beginner",
+        "question": "Find 10% of $120.",
+        "given": "Base=$120; rate=10%",
+        "expectedMethod": "Convert the rate to a decimal and multiply by the base.",
+        "formula": "part = base × rate",
+        "workedSolution": "120 × 0.1 = 12.",
+        "finalAnswer": "$12",
+        "commonMistake": "Using the percent as a whole number."
+    },
+    {
+        "id": "business-balanced-002",
+        "difficulty": "beginner",
+        "question": "Find 15% of $160.",
+        "given": "Base=$160; rate=15%",
+        "expectedMethod": "Convert the rate to a decimal and multiply by the base.",
+        "formula": "part = base × rate",
+        "workedSolution": "160 × 0.15 = 24.",
+        "finalAnswer": "$24",
+        "commonMistake": "Using the percent as a whole number."
+    },
+    {
+        "id": "business-balanced-003",
+        "difficulty": "intermediate",
+        "question": "Find the simple interest on $1,200 at 3% per year for 2 years.",
+        "given": "P=$1,200; r=3%; t=2 years",
+        "expectedMethod": "Multiply principal, decimal rate, and time.",
+        "formula": "I = Prt",
+        "workedSolution": "I=1200×0.03×2=72.",
+        "finalAnswer": "$72",
+        "commonMistake": "Giving the balance instead of interest."
+    },
+    {
+        "id": "business-balanced-004",
+        "difficulty": "intermediate",
+        "question": "Find the simple interest on $1,500 at 4% per year for 3 years.",
+        "given": "P=$1,500; r=4%; t=3 years",
+        "expectedMethod": "Multiply principal, decimal rate, and time.",
+        "formula": "I = Prt",
+        "workedSolution": "I=1500×0.04×3=180.",
+        "finalAnswer": "$180",
+        "commonMistake": "Giving the balance instead of interest."
+    },
+    {
+        "id": "business-balanced-005",
+        "difficulty": "application",
+        "question": "A salesperson earns 5% commission on $1,800 in eligible sales. Find the commission.",
+        "given": "Sales=$1,800; rate=5%",
+        "expectedMethod": "Multiply eligible sales by the decimal commission rate.",
+        "formula": "C = sr/100",
+        "workedSolution": "C=1800×5/100=90.",
+        "finalAnswer": "$90",
+        "commonMistake": "Applying commission to ineligible sales."
+    },
+    {
+        "id": "business-balanced-006",
+        "difficulty": "application",
+        "question": "A worker earns $175 per hour for 25 regular hours and 2 overtime hours at 1.5 times the rate. Find gross pay.",
+        "given": "rate=$175/h; regular=25 h; overtime=2 h",
+        "expectedMethod": "Calculate regular and overtime earnings separately, then add.",
+        "formula": "G = rh + 1.5ro",
+        "workedSolution": "175×25+175×1.5×2=4900.",
+        "finalAnswer": "$4,900",
+        "commonMistake": "Applying the overtime multiplier to all hours."
+    },
+    {
+        "id": "business-balanced-007",
+        "difficulty": "application",
+        "question": "A salesperson earns 7% commission on $2,300 in eligible sales. Find the commission.",
+        "given": "Sales=$2,300; rate=7%",
+        "expectedMethod": "Multiply eligible sales by the decimal commission rate.",
+        "formula": "C = sr/100",
+        "workedSolution": "C=2300×7/100=161.",
+        "finalAnswer": "$161",
+        "commonMistake": "Applying commission to ineligible sales."
+    },
+    {
+        "id": "business-balanced-008",
+        "difficulty": "advanced",
+        "question": "Find the balance of $1,000 invested at 4% annual compound interest for 2 years.",
+        "given": "P=$1,000; r=4%; t=2",
+        "expectedMethod": "Use annual compound interest and round at the end.",
+        "formula": "A=P(1+r)^t",
+        "workedSolution": "A=1000(1+0.04)^2=1081.60.",
+        "finalAnswer": "$1,081.6",
+        "commonMistake": "Using simple interest."
+    },
+    {
+        "id": "business-balanced-009",
+        "difficulty": "advanced",
+        "question": "Find the balance of $1,200 invested at 5% annual compound interest for 3 years.",
+        "given": "P=$1,200; r=5%; t=3",
+        "expectedMethod": "Use annual compound interest and round at the end.",
+        "formula": "A=P(1+r)^t",
+        "workedSolution": "A=1200(1+0.05)^3=1389.15.",
+        "finalAnswer": "$1,389.15",
+        "commonMistake": "Using simple interest."
+    },
+    {
+        "id": "business-balanced-010",
+        "difficulty": "advanced",
+        "question": "Find the balance of $1,400 invested at 6% annual compound interest for 4 years.",
+        "given": "P=$1,400; r=6%; t=4",
+        "expectedMethod": "Use annual compound interest and round at the end.",
+        "formula": "A=P(1+r)^t",
+        "workedSolution": "A=1400(1+0.06)^4=1767.47.",
+        "finalAnswer": "$1,767.47",
+        "commonMistake": "Using simple interest."
+    },
+    {
+        "id": "business-balanced-011",
+        "difficulty": "challenge",
+        "question": "After a 20% discount, an item costs $96 before tax. Find its original listed price.",
+        "given": "sale price=$96; discount=20%",
+        "expectedMethod": "Divide sale price by the fraction of the original price that remains.",
+        "formula": "original = sale/(1−rate)",
+        "workedSolution": "96÷0.8=120.00.",
+        "finalAnswer": "$120",
+        "commonMistake": "Subtracting the discount from the sale price."
+    },
+    {
+        "id": "business-balanced-012",
+        "difficulty": "challenge",
+        "question": "After a 25% discount, an item costs $108 before tax. Find its original listed price.",
+        "given": "sale price=$108; discount=25%",
+        "expectedMethod": "Divide sale price by the fraction of the original price that remains.",
+        "formula": "original = sale/(1−rate)",
+        "workedSolution": "108÷0.75=144.00.",
+        "finalAnswer": "$144",
+        "commonMistake": "Subtracting the discount from the sale price."
+    },
+    {
+        "id": "business-balanced-013",
+        "difficulty": "challenge",
+        "question": "After a 30% discount, an item costs $120 before tax. Find its original listed price.",
+        "given": "sale price=$120; discount=30%",
+        "expectedMethod": "Divide sale price by the fraction of the original price that remains.",
+        "formula": "original = sale/(1−rate)",
+        "workedSolution": "120÷0.7=171.43.",
+        "finalAnswer": "$171.43",
+        "commonMistake": "Subtracting the discount from the sale price."
+    },
+    {
+        "id": "business-balanced-014",
+        "difficulty": "challenge",
+        "question": "After a 35% discount, an item costs $132 before tax. Find its original listed price.",
+        "given": "sale price=$132; discount=35%",
+        "expectedMethod": "Divide sale price by the fraction of the original price that remains.",
+        "formula": "original = sale/(1−rate)",
+        "workedSolution": "132÷0.65=203.08.",
+        "finalAnswer": "$203.08",
+        "commonMistake": "Subtracting the discount from the sale price."
+    },
+    {
+        "id": "business-balanced-015",
+        "difficulty": "challenge",
+        "question": "After a 20% discount, an item costs $144 before tax. Find its original listed price.",
+        "given": "sale price=$144; discount=20%",
+        "expectedMethod": "Divide sale price by the fraction of the original price that remains.",
+        "formula": "original = sale/(1−rate)",
+        "workedSolution": "144÷0.8=180.00.",
+        "finalAnswer": "$180",
+        "commonMistake": "Subtracting the discount from the sale price."
+    },
+    {
+        "id": "business-balanced-016",
+        "difficulty": "analysis",
+        "question": "An item costs $60 and sells for $72. Find profit, markup on cost, and margin on selling price.",
+        "given": "cost=$60; selling price=$72",
+        "expectedMethod": "Find profit, then divide by the stated base for each rate.",
+        "formula": "profit=selling−cost; markup=profit/cost; margin=profit/selling",
+        "workedSolution": "Profit=12; markup=20.0%; margin=16.7%.",
+        "finalAnswer": "Profit $12; markup 20.0%; margin 16.7%.",
+        "commonMistake": "Using the wrong base for a percentage."
+    },
+    {
+        "id": "business-balanced-017",
+        "difficulty": "analysis",
+        "question": "An item costs $70 and sells for $87.5. Find profit, markup on cost, and margin on selling price.",
+        "given": "cost=$70; selling price=$87.5",
+        "expectedMethod": "Find profit, then divide by the stated base for each rate.",
+        "formula": "profit=selling−cost; markup=profit/cost; margin=profit/selling",
+        "workedSolution": "Profit=17.5; markup=25.0%; margin=20.0%.",
+        "finalAnswer": "Profit $17.5; markup 25.0%; margin 20.0%.",
+        "commonMistake": "Using the wrong base for a percentage."
+    },
+    {
+        "id": "business-balanced-018",
+        "difficulty": "analysis",
+        "question": "An item costs $80 and sells for $104. Find profit, markup on cost, and margin on selling price.",
+        "given": "cost=$80; selling price=$104",
+        "expectedMethod": "Find profit, then divide by the stated base for each rate.",
+        "formula": "profit=selling−cost; markup=profit/cost; margin=profit/selling",
+        "workedSolution": "Profit=24; markup=30.0%; margin=23.1%.",
+        "finalAnswer": "Profit $24; markup 30.0%; margin 23.1%.",
+        "commonMistake": "Using the wrong base for a percentage."
+    },
+    {
+        "id": "business-balanced-019",
+        "difficulty": "analysis",
+        "question": "An item costs $90 and sells for $121.5. Find profit, markup on cost, and margin on selling price.",
+        "given": "cost=$90; selling price=$121.5",
+        "expectedMethod": "Find profit, then divide by the stated base for each rate.",
+        "formula": "profit=selling−cost; markup=profit/cost; margin=profit/selling",
+        "workedSolution": "Profit=31.5; markup=35.0%; margin=25.9%.",
+        "finalAnswer": "Profit $31.5; markup 35.0%; margin 25.9%.",
+        "commonMistake": "Using the wrong base for a percentage."
+    },
+    {
+        "id": "business-balanced-020",
+        "difficulty": "analysis",
+        "question": "An item costs $100 and sells for $120. Find profit, markup on cost, and margin on selling price.",
+        "given": "cost=$100; selling price=$120",
+        "expectedMethod": "Find profit, then divide by the stated base for each rate.",
+        "formula": "profit=selling−cost; markup=profit/cost; margin=profit/selling",
+        "workedSolution": "Profit=20; markup=20.0%; margin=16.7%.",
+        "finalAnswer": "Profit $20; markup 20.0%; margin 16.7%.",
+        "commonMistake": "Using the wrong base for a percentage."
     }
   ]
 }
